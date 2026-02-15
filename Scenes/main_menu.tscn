@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://drfu2g6kjne6u"]
+
+[ext_resource type="Script" uid="uid://c7hs83rvl77l5" path="res://Scripts/main_menu.gd" id="1_28flt"]
+[ext_resource type="PackedScene" uid="uid://b4lrcnayadbvs" path="res://Scenes/options_screen.tscn" id="2_48xlc"]
+
+[node name="MainMenu" type="Control" unique_id=718055170 node_paths=PackedStringArray("play_btn", "quit_btn", "options_btn")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_28flt")
+play_btn = NodePath("PlayBtn")
+quit_btn = NodePath("QuitBtn")
+options_btn = NodePath("OptionsBtn")
+
+[node name="PlayBtn" type="Button" parent="." unique_id=147146200]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -105.0
+offset_right = 21.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+
+[node name="OptionsBtn" type="Button" parent="." unique_id=553367484]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -61.0
+offset_right = 36.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+
+[node name="QuitBtn" type="Button" parent="." unique_id=240911652]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -15.5
+offset_right = 21.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[node name="OptionsScreen" parent="." unique_id=1949582789 instance=ExtResource("2_48xlc")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 247.0
+offset_top = 29.0
+offset_right = 247.0
+offset_bottom = 29.0
+grow_horizontal = 1
+grow_vertical = 1

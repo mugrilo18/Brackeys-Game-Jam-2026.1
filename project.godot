@@ -11,8 +11,17 @@ config_version=5
 [application]
 
 config/name="Brackeys Game Jam 2026.1"
+run/main_scene="uid://drfu2g6kjne6u"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://bmtc85xa8xod4"
+
+[autoload]
+
+Audio="*uid://bvmhpe1wxxt6l"
 
 [physics]
 
