@@ -1,16 +1,107 @@
 [gd_scene format=3 uid="uid://dp0xtnqpp1i07"]
 
-[ext_resource type="Texture2D" uid="uid://bnv0lbbki5t4f" path="res://Assets/playerPlaceholder.png" id="1_21ndq"]
 [ext_resource type="Script" uid="uid://bniy53kkqa41o" path="res://Scripts/Components/player.gd" id="1_jkxu4"]
+[ext_resource type="Texture2D" uid="uid://c3qqnjup2wqhk" path="res://Assets/player.png" id="2_jkxu4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivica"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ismmh"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(33, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h38b"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(66, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8ohm"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(99, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkxu4"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(0, 66, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7beo"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(33, 66, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62xfu"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(66, 66, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq6vr"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(99, 66, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppr8i"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(0, 33, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lle01"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(33, 33, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjhgm"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(66, 33, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nahcw"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(99, 33, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jkxu4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_21ndq")
+"texture": SubResource("AtlasTexture_ivica")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ismmh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8h38b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8ohm")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkxu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7beo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62xfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq6vr")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppr8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lle01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjhgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nahcw")
+}],
+"loop": true,
+"name": &"Walk",
 "speed": 5.0
 }]
 
@@ -18,13 +109,25 @@ animations = [{
 radius = 66.0
 height = 189.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=936548310]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkxu4"]
+size = Vector2(98, 141)
+
+[node name="Player" type="CharacterBody2D" unique_id=936548310]
 script = ExtResource("1_jkxu4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=369066615]
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_jkxu4")
+animation = &"Walk"
+frame_progress = 0.05714364
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=922175343]
-position = Vector2(-9, 2.5)
+position = Vector2(9, 5)
 shape = SubResource("CapsuleShape2D_21ndq")
+
+[node name="InteractArea" type="Area2D" parent="." unique_id=66639585]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=1984745253]
+position = Vector2(6, 8.5)
+shape = SubResource("RectangleShape2D_jkxu4")
+debug_color = Color(0.8765736, 0.00041738988, 0.8339862, 0.41960785)
