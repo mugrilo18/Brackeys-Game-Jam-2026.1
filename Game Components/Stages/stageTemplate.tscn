@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://cffnnxks8osk7"]
 
+[ext_resource type="Script" uid="uid://rchrrekougvt" path="res://Game Components/Stages/stage.gd" id="1_w1v2m"]
+[ext_resource type="PackedScene" uid="uid://dp6yta80hmioa" path="res://Game Components/Stages/StageComponents/player_spawner.tscn" id="2_q645c"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6x18t"]
 size = Vector2(1301.4084, 20)
 
@@ -7,6 +10,7 @@ size = Vector2(1301.4084, 20)
 size = Vector2(40, 727)
 
 [node name="Stage" type="Node2D" unique_id=1567375503]
+script = ExtResource("1_w1v2m")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1395649167]
 position = Vector2(4, 637)
@@ -22,3 +26,6 @@ shape = SubResource("RectangleShape2D_w1v2m")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=753951446]
 position = Vector2(1278, -280)
 shape = SubResource("RectangleShape2D_w1v2m")
+
+[node name="PlayerSpawner" parent="." unique_id=568985626 instance=ExtResource("2_q645c")]
+position = Vector2(117, 601)

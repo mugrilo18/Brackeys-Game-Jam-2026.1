@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bniy53kkqa41o" path="res://Scripts/Components/player.gd" id="1_jkxu4"]
 [ext_resource type="Texture2D" uid="uid://c3qqnjup2wqhk" path="res://Assets/player.png" id="2_jkxu4"]
+[ext_resource type="PackedScene" uid="uid://gy5qitxqttdf" path="res://Game Components/Dialogue/dialogue_box.tscn" id="3_ivica"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivica"]
 atlas = ExtResource("2_jkxu4")
@@ -131,3 +132,16 @@ shape = SubResource("CapsuleShape2D_21ndq")
 position = Vector2(6, 8.5)
 shape = SubResource("RectangleShape2D_jkxu4")
 debug_color = Color(0.8765736, 0.00041738988, 0.8339862, 0.41960785)
+
+[node name="DialogueBox" parent="." unique_id=1521970364 instance=ExtResource("3_ivica")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -230.0
+offset_right = 160.0
+offset_bottom = -108.0
+grow_horizontal = 2
+grow_vertical = 2

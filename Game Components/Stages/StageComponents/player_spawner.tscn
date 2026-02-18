@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dp6yta80hmioa"]
+
+[ext_resource type="Script" uid="uid://cpy3d5813k4wr" path="res://Game Components/Stages/StageComponents/player_spawner.gd" id="1_6hmlm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pxgld"]
+radius = 66.0
+height = 189.0
+
+[node name="PlayerSpawner" type="Marker2D" unique_id=568985626]
+script = ExtResource("1_6hmlm")
+
+[node name="PlayerArea" type="Area2D" parent="." unique_id=599638474]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea" unique_id=1870277830]
+shape = SubResource("CapsuleShape2D_pxgld")
+debug_color = Color(0.642658, 0.33610627, 1, 0.41960785)
+
+[node name="Label" type="Label" parent="." unique_id=190846985]
+offset_left = -58.0
+offset_top = -52.0
+offset_right = 58.0
+offset_bottom = -29.0
+text = "PlayerSpawner"

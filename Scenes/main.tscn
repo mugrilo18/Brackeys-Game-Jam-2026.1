@@ -2,18 +2,10 @@
 
 [ext_resource type="Script" uid="uid://ccb5jxehl4m17" path="res://Scenes/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://dp0xtnqpp1i07" path="res://Game Components/player.tscn" id="2_bo1nx"]
-[ext_resource type="Texture2D" uid="uid://csrpnsgwllts" path="res://Assets/MonsterPlaceholder.png" id="2_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://cffnnxks8osk7" path="res://Game Components/stage.tscn" id="3_8gbba"]
 
 [node name="Main" type="Node2D" unique_id=643756179]
 script = ExtResource("1_jjgbg")
-
-[node name="Placeholder" type="Sprite2D" parent="." unique_id=569248971]
-position = Vector2(622, 313)
-scale = Vector2(6, 6)
-texture = ExtResource("2_jjvhh")
+startingStage = "uid://cffnnxks8osk7"
 
 [node name="Player" parent="." unique_id=936548310 instance=ExtResource("2_bo1nx")]
 position = Vector2(142, 597)
-
-[node name="Stage" parent="." unique_id=1567375503 instance=ExtResource("3_8gbba")]
