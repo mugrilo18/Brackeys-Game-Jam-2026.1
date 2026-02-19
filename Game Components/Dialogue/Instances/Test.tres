@@ -1,25 +1,24 @@
 [gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://0258ayakegfg"]
 
+[ext_resource type="Script" uid="uid://dub06jc0wj065" path="res://Game Components/Dialogue/Global/DialogueEvents.gd" id="1_fnobg"]
 [ext_resource type="Script" uid="uid://chjd0eerw6550" path="res://Game Components/Dialogue/Global/DialogueRes.gd" id="1_kvvrd"]
-[ext_resource type="Script" uid="uid://cgkf07m1gvw0a" path="res://Game Components/Dialogue/Global/SpeechRes.gd" id="2_fnobg"]
+[ext_resource type="Script" uid="uid://cgkf07m1gvw0a" path="res://Game Components/Dialogue/Global/SpeechEvent.gd" id="2_fnobg"]
+[ext_resource type="Script" uid="uid://cftkvrfd2e4yi" path="res://Game Components/Dialogue/Global/AnimationEvent.gd" id="3_k3km0"]
 
-[sub_resource type="Resource" id="Resource_kvvrd"]
+[sub_resource type="Resource" id="Resource_7t6ox"]
 script = ExtResource("2_fnobg")
-message = "I like boobies, my moomy like milkies. YAY"
+message = "PLEASE PLEASE, STOP THIS SHIT PLEASE"
 metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
 
-[sub_resource type="Resource" id="Resource_fnobg"]
-script = ExtResource("2_fnobg")
-message = "Why are you runnin, Why are you gae, you are gae"
-metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
-
-[sub_resource type="Resource" id="Resource_k3km0"]
-script = ExtResource("2_fnobg")
-message = "The Dialogue needs to end now, bye bye"
-metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+[sub_resource type="Resource" id="Resource_ngklm"]
+script = ExtResource("3_k3km0")
+animationStr = "Run"
+flipSprite = true
+newPos = Vector2(253, 604)
+animationTime = 2.0
+metadata/_custom_type_script = "uid://cftkvrfd2e4yi"
 
 [resource]
 script = ExtResource("1_kvvrd")
-ID = "test"
-txt = Array[ExtResource("2_fnobg")]([SubResource("Resource_kvvrd"), SubResource("Resource_fnobg"), SubResource("Resource_k3km0")])
+ev = Array[ExtResource("1_fnobg")]([SubResource("Resource_7t6ox"), SubResource("Resource_ngklm")])
 metadata/_custom_type_script = "uid://chjd0eerw6550"

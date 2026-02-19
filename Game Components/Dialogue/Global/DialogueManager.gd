@@ -7,11 +7,11 @@ func setNewDialogue(new:Dialogue):
 	currentDialogue = new
 	curSpeechIndex = 0
 
-func getDialogueSpeech() -> Speech:
-	if curSpeechIndex > currentDialogue.txt.size()-1:
+func getDialogueEvent() -> DialogueEvents:
+	if curSpeechIndex > currentDialogue.ev.size()-1:
 		return null
 	
-	return currentDialogue.txt[curSpeechIndex]
+	return currentDialogue.ev[curSpeechIndex]
 
 func advanceDialogue():
 	curSpeechIndex += 1

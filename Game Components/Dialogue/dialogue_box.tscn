@@ -140,5 +140,3 @@ visible_characters_behavior = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=900542507]
 libraries/ = SubResource("AnimationLibrary_1eedt")
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

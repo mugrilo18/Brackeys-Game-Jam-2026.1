@@ -7,20 +7,11 @@ extends Control
 
 var charTween:Tween
 
-signal dialogueEnded
-
 func startDialogue():
 	animation.play("Appear")
-	setText()
 
-func setText():
-	var speech:Speech = DialogueManager.getDialogueSpeech()
-	
-	if speech == null or speech.speakerKey != speakerKey:
-		endDialogue()
-		return
-	
-	txtMessage.text = speech.message
+func setText(speechText):
+	txtMessage.text = speechText
 	animateText()
 
 func animateText():
@@ -37,8 +28,3 @@ func completeDialogue():
 
 func endDialogue():
 	animation.play("Disappear")
-
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "Disappear":
-		dialogueEnded.emit()

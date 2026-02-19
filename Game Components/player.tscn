@@ -180,6 +180,9 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_ismmh")
 
+[node name="AnimationEventTimer" type="Timer" parent="." unique_id=255890880]
+one_shot = true
+
 [connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]
 [connection signal="area_exited" from="InteractArea" to="." method="_on_interact_area_area_exited"]
-[connection signal="dialogueEnded" from="DialogueBox" to="." method="_on_dialogue_box_dialogue_ended"]
+[connection signal="timeout" from="AnimationEventTimer" to="." method="_on_animation_event_timer_timeout"]

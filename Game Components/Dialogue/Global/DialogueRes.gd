@@ -2,4 +2,4 @@ extends Resource
 
 class_name Dialogue
 
-@export var txt:Array[Speech]
+@export var ev:Array[DialogueEvents]
