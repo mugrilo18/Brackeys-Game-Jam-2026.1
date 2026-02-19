@@ -2,10 +2,15 @@
 
 [ext_resource type="Script" uid="uid://ccb5jxehl4m17" path="res://Scenes/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://dp0xtnqpp1i07" path="res://Game Components/player.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://b4lrcnayadbvs" path="res://Scenes/options_screen.tscn" id="3_8gbba"]
 
 [node name="Main" type="Node2D" unique_id=643756179]
 script = ExtResource("1_jjgbg")
 startingStage = "uid://cffnnxks8osk7"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=960141623]
+
+[node name="OptionsScreen" parent="CanvasLayer" unique_id=228424028 instance=ExtResource("3_8gbba")]
 
 [node name="Player" parent="." unique_id=936548310 instance=ExtResource("2_bo1nx")]
 position = Vector2(142, 597)
