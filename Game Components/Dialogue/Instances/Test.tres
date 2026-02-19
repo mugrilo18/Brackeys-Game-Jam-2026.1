@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://0258ayakegfg"]
+
+[ext_resource type="Script" uid="uid://chjd0eerw6550" path="res://Game Components/Dialogue/Global/DialogueRes.gd" id="1_kvvrd"]
+[ext_resource type="Script" uid="uid://cgkf07m1gvw0a" path="res://Game Components/Dialogue/Global/SpeechRes.gd" id="2_fnobg"]
+
+[sub_resource type="Resource" id="Resource_kvvrd"]
+script = ExtResource("2_fnobg")
+message = "I like boobies, my moomy like milkies. YAY"
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_fnobg"]
+script = ExtResource("2_fnobg")
+message = "Why are you runnin, Why are you gae, you are gae"
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_k3km0"]
+script = ExtResource("2_fnobg")
+message = "The Dialogue needs to end now, bye bye"
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[resource]
+script = ExtResource("1_kvvrd")
+ID = "test"
+txt = Array[ExtResource("2_fnobg")]([SubResource("Resource_kvvrd"), SubResource("Resource_fnobg"), SubResource("Resource_k3km0")])
+metadata/_custom_type_script = "uid://chjd0eerw6550"

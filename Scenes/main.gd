@@ -20,9 +20,11 @@ func loadStage(stagePath:String):
 		return
 	
 	var stageLoad = load(stagePath)
-	var stageInstance = stageLoad.instantiate()
+	var stageInstance:Stage = stageLoad.instantiate()
 	add_child(stageInstance)
+	
 	curStage = stageInstance
+	curStage.z_index = -1
 	
 	setPlayerPosition()
 

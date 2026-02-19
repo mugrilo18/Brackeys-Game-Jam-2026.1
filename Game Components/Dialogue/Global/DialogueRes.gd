@@ -1,4 +1,5 @@
 extends Resource
 
-@export var ID:String
-@export var txt:Array[String]
+class_name Dialogue
+
+@export var txt:Array[Speech]

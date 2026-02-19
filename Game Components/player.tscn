@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bniy53kkqa41o" path="res://Scripts/Components/player.gd" id="1_jkxu4"]
 [ext_resource type="Texture2D" uid="uid://c3qqnjup2wqhk" path="res://Assets/player.png" id="2_jkxu4"]
 [ext_resource type="PackedScene" uid="uid://gy5qitxqttdf" path="res://Game Components/Dialogue/dialogue_box.tscn" id="3_ivica"]
+[ext_resource type="Texture2D" uid="uid://b6vahb0yojsca" path="res://Assets/interactIcon.png" id="4_ismmh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivica"]
 atlas = ExtResource("2_jkxu4")
@@ -113,7 +114,19 @@ height = 189.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkxu4"]
 size = Vector2(98, 141)
 
-[node name="Player" type="CharacterBody2D" unique_id=936548310]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8h38b"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[node name="Player" type="CharacterBody2D" unique_id=936548310 groups=["Player"]]
 script = ExtResource("1_jkxu4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=369066615]
@@ -145,3 +158,28 @@ offset_right = 160.0
 offset_bottom = -108.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=2062777569]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = -160.0
+offset_right = 30.0
+offset_bottom = -100.0
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_8h38b")
+
+[node name="TextureRect" type="TextureRect" parent="Panel" unique_id=240461511]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ismmh")
+
+[connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]
+[connection signal="area_exited" from="InteractArea" to="." method="_on_interact_area_area_exited"]
+[connection signal="dialogueEnded" from="DialogueBox" to="." method="_on_dialogue_box_dialogue_ended"]

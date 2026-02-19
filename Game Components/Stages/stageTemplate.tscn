@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://rchrrekougvt" path="res://Game Components/Stages/stage.gd" id="1_w1v2m"]
 [ext_resource type="PackedScene" uid="uid://dp6yta80hmioa" path="res://Game Components/Stages/StageComponents/player_spawner.tscn" id="2_q645c"]
+[ext_resource type="PackedScene" uid="uid://dflm43232proc" path="res://Game Components/Stages/StageComponents/Interactables/interactableTemplate.tscn" id="3_yvwml"]
+[ext_resource type="Resource" uid="uid://b8pm46gn7xse3" path="res://Game Components/Dialogue/Instances/Test2.tres" id="4_bynis"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6x18t"]
 size = Vector2(1301.4084, 20)
@@ -28,4 +30,13 @@ position = Vector2(1278, -280)
 shape = SubResource("RectangleShape2D_w1v2m")
 
 [node name="PlayerSpawner" parent="." unique_id=568985626 instance=ExtResource("2_q645c")]
-position = Vector2(117, 601)
+position = Vector2(253, 604)
+
+[node name="InteractableTemplate" parent="." unique_id=151419543 instance=ExtResource("3_yvwml")]
+position = Vector2(581, 567)
+
+[node name="InteractableTemplate2" parent="." unique_id=723186269 instance=ExtResource("3_yvwml")]
+position = Vector2(1013, 597)
+autoTrigger = true
+deleteAfter = true
+InteractDialogue = ExtResource("4_bynis")

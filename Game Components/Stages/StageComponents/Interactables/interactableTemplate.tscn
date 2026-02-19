@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dflm43232proc"]
+
+[ext_resource type="Script" uid="uid://dedf1muwea8ki" path="res://Game Components/Stages/StageComponents/Interactables/interactable.gd" id="1_ad1ca"]
+[ext_resource type="Texture2D" uid="uid://c2urnu4utweg5" path="res://icon.svg" id="1_v1jr4"]
+[ext_resource type="Resource" uid="uid://0258ayakegfg" path="res://Game Components/Dialogue/Instances/Test.tres" id="2_gan6s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vnug"]
+size = Vector2(128, 128)
+
+[node name="InteractableTemplate" type="Area2D" unique_id=151419543]
+script = ExtResource("1_ad1ca")
+InteractDialogue = ExtResource("2_gan6s")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=1540541180]
+texture = ExtResource("1_v1jr4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=554247878]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_6vnug")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
