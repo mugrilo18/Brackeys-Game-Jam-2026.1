@@ -100,7 +100,8 @@ func setSpeechDialogue(event:SpeechEvent):
 
 func setAnimationDialogue(event:AnimationEvent):
 	#Close dialogue Box
-	dialogueBox.endDialogue()
+	if dialogueBox.visible:
+		dialogueBox.endDialogue()
 	
 	#SetTimer
 	var time = event.animationTime
