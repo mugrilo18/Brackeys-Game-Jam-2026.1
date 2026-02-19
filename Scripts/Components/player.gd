@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Player
 
+@export var game:MainGame
+
 @onready var playerSprite = $AnimatedSprite2D
 @onready var interactArea = $InteractArea
 @onready var dialogueBox = $DialogueBox
@@ -16,11 +18,13 @@ const RunSpeed = 500.0
 var interactableRef:Interactable = null
 var onDialogue = false
 
+var onInventory = false
+
 func _ready() -> void:
 	interactSign.visible = false
 
 func _physics_process(delta: float) -> void:
-	if onDialogue:
+	if onDialogue or onInventory:
 		velocity.x = 0
 		return
 	
@@ -40,7 +44,7 @@ func flipPlayer():
 		playerSprite.flip_h = false
 
 func animatePlayer():
-	if onDialogue:
+	if onDialogue or onInventory:
 		return
 	
 	var movementAnimation = "Run" if Input.is_action_pressed("Run") else "Walk"
@@ -63,6 +67,7 @@ func HorizontalMovement():
 	else:
 		velocity.x = move_toward(velocity.x, 0, curSpeed)
 
+# DIALOGUE
 func checkDialogueInput():
 	if !onDialogue:
 		startDialogue()
@@ -71,11 +76,21 @@ func checkDialogueInput():
 
 func startDialogue():
 	interactSign.visible = false
-	playerSprite.play("Idle")
-	DialogueManager.setNewDialogue(interactableRef.InteractDialogue)
+	
+	var dialogue:Dialogue = interactableRef.getNormalDialogue()
+	if onInventory:
+		var item = game.getSelectedItem()
+		dialogue = interactableRef.checkItem(item)
+		
+		onInventory = false
+		game.closeInventoryUI()
+	
+	DialogueManager.setNewDialogue(dialogue)
 	setDialogue()
 
 func setDialogue():
+	playerSprite.play("Idle")
+	
 	#Se é um texto, animação ou os cacete
 	var event:DialogueEvents = DialogueManager.getDialogueEvent()
 	if event == null:
@@ -86,6 +101,8 @@ func setDialogue():
 		setSpeechDialogue(event)
 	elif event is AnimationEvent:
 		setAnimationDialogue(event)
+	elif event is GiveItemEvent:
+		giveItemToPlayer(event)
 
 func setSpeechDialogue(event:SpeechEvent):
 	if event.entityKey != playerKey:
@@ -94,6 +111,8 @@ func setSpeechDialogue(event:SpeechEvent):
 	
 	if !onDialogue:
 		onDialogue = true
+	
+	if !dialogueBox.visible:
 		dialogueBox.startDialogue()
 	
 	dialogueBox.setText(event.message)
@@ -136,6 +155,15 @@ func setAnimationDialogue(event:AnimationEvent):
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", event.newPos, time)
 
+func giveItemToPlayer(event:GiveItemEvent):
+	interactableRef.giveItem()
+	InventoryManager.addItem(event.item)
+	
+	game.updateInventoryUI()
+	#Give small message that player received the item :D
+	
+	advanceDialogue()
+
 func endDialogue():
 	if dialogueBox.visible:
 		dialogueBox.endDialogue()
@@ -172,9 +200,25 @@ func advanceDialogue():
 	DialogueManager.advanceDialogue()
 	setDialogue()
 
+#INVENTORY
+func checkInventoryInput():
+	if InventoryManager.inventory.size() == 0:
+		return
+	
+	onInventory = !onInventory
+	playerSprite.play("Idle")
+	
+	if onInventory:
+		game.openInventoryUI()
+	else:
+		game.closeInventoryUI()
+
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Interact") and interactableRef != null:
 		checkDialogueInput()
+	
+	if Input.is_action_just_pressed("OpenInventory") and interactableRef != null:
+		checkInventoryInput()
 
 func _on_interact_area_area_entered(area: Area2D) -> void:
 	if area is Interactable and !onDialogue:

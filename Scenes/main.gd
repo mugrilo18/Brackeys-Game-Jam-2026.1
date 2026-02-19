@@ -1,6 +1,11 @@
 extends Node2D
 
+class_name MainGame
+
 @onready var player = $Player
+
+#UI
+@onready var inventoryUI = $CanvasLayer/ItemMenuBar
 
 @export_file("*.tscn") var startingStage:String
 var curStage:Stage
@@ -8,6 +13,7 @@ var curStage:Stage
 func _ready() -> void:
 	loadStage(startingStage)
 
+#STAGE LOGIC
 func removeStage():
 	if curStage == null:
 		return
@@ -30,3 +36,16 @@ func loadStage(stagePath:String):
 
 func setPlayerPosition():
 	player.global_position = curStage.GetPlayerPos()
+
+#INVENTORY LOGIC
+func updateInventoryUI():
+	inventoryUI.updateItems()
+
+func getSelectedItem():
+	return inventoryUI.getSelectedItem()
+
+func openInventoryUI():
+	inventoryUI.setBoxActive()
+
+func closeInventoryUI():
+	inventoryUI.setBoxInactive()

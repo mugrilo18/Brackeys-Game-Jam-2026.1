@@ -2,10 +2,16 @@
 
 [ext_resource type="Script" uid="uid://ccb5jxehl4m17" path="res://Scenes/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://dp0xtnqpp1i07" path="res://Game Components/player.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://d1bnaiq4iod8" path="res://Game Components/UI/item_menu_bar.tscn" id="3_8gbba"]
 
 [node name="Main" type="Node2D" unique_id=643756179]
 script = ExtResource("1_jjgbg")
 startingStage = "uid://cffnnxks8osk7"
 
-[node name="Player" parent="." unique_id=936548310 instance=ExtResource("2_bo1nx")]
+[node name="Player" parent="." unique_id=936548310 node_paths=PackedStringArray("game") instance=ExtResource("2_bo1nx")]
 position = Vector2(142, 597)
+game = NodePath("..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=12748425]
+
+[node name="ItemMenuBar" parent="CanvasLayer" unique_id=1193328855 instance=ExtResource("3_8gbba")]

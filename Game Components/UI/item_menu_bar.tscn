@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://d1bnaiq4iod8"]
+
+[ext_resource type="Script" uid="uid://nwni51fjyjx8" path="res://Game Components/UI/item_menu_bar.gd" id="1_8e7xj"]
+[ext_resource type="PackedScene" uid="uid://bnyn66qw6rgfg" path="res://Game Components/UI/item_menu.tscn" id="1_m7x5v"]
+
+[sub_resource type="Animation" id="Animation_vlfwe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -200)]
+}
+
+[sub_resource type="Animation" id="Animation_8e7xj"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.27739263, 1),
+"update": 0,
+"values": [Vector2(0, -200), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0sl4h"]
+resource_name = "disappear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.34151033, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -200)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vlfwe"]
+_data = {
+&"RESET": SubResource("Animation_vlfwe"),
+&"appear": SubResource("Animation_8e7xj"),
+&"disappear": SubResource("Animation_0sl4h")
+}
+
+[node name="ItemMenuBar" type="Control" unique_id=1193328855]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8e7xj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1379227100]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -200.0
+offset_bottom = -50.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="ItemMenu" parent="HBoxContainer" unique_id=75808516 instance=ExtResource("1_m7x5v")]
+layout_mode = 2
+
+[node name="ItemMenu2" parent="HBoxContainer" unique_id=1956617257 instance=ExtResource("1_m7x5v")]
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1438720757]
+libraries/ = SubResource("AnimationLibrary_vlfwe")

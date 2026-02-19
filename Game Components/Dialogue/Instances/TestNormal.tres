@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://chjd0eerw6550" path="res://Game Components/Dialogue/Global/DialogueRes.gd" id="1_kvvrd"]
 [ext_resource type="Script" uid="uid://cgkf07m1gvw0a" path="res://Game Components/Dialogue/Global/SpeechEvent.gd" id="2_fnobg"]
 [ext_resource type="Script" uid="uid://cftkvrfd2e4yi" path="res://Game Components/Dialogue/Global/AnimationEvent.gd" id="3_k3km0"]
+[ext_resource type="Resource" uid="uid://c03vcctv5fp70" path="res://Game Components/Inventory/Instances/hairClip.tres" id="4_ngklm"]
+[ext_resource type="Script" uid="uid://dofydekq6cw06" path="res://Game Components/Dialogue/Global/GiveItemEvent.gd" id="5_hm5a4"]
 
 [sub_resource type="Resource" id="Resource_7t6ox"]
 script = ExtResource("2_fnobg")
@@ -18,7 +20,17 @@ newPos = Vector2(253, 604)
 animationTime = 2.0
 metadata/_custom_type_script = "uid://cftkvrfd2e4yi"
 
+[sub_resource type="Resource" id="Resource_hm5a4"]
+script = ExtResource("2_fnobg")
+message = "Oh my, i found my hairclip horray"
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_wmlix"]
+script = ExtResource("5_hm5a4")
+item = ExtResource("4_ngklm")
+metadata/_custom_type_script = "uid://dofydekq6cw06"
+
 [resource]
 script = ExtResource("1_kvvrd")
-ev = Array[ExtResource("1_fnobg")]([SubResource("Resource_7t6ox"), SubResource("Resource_ngklm")])
+ev = Array[ExtResource("1_fnobg")]([SubResource("Resource_7t6ox"), SubResource("Resource_ngklm"), SubResource("Resource_hm5a4"), SubResource("Resource_wmlix")])
 metadata/_custom_type_script = "uid://chjd0eerw6550"

@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://rchrrekougvt" path="res://Game Components/Stages/stage.gd" id="1_w1v2m"]
 [ext_resource type="PackedScene" uid="uid://dp6yta80hmioa" path="res://Game Components/Stages/StageComponents/player_spawner.tscn" id="2_q645c"]
 [ext_resource type="PackedScene" uid="uid://dflm43232proc" path="res://Game Components/Stages/StageComponents/Interactables/interactableTemplate.tscn" id="3_yvwml"]
+[ext_resource type="Resource" uid="uid://0258ayakegfg" path="res://Game Components/Dialogue/Instances/TestNormal.tres" id="4_bynis"]
+[ext_resource type="Resource" uid="uid://dc4vmhjm5u8d7" path="res://Game Components/Dialogue/Instances/TestGaveItem.tres" id="5_u7vl6"]
+[ext_resource type="Resource" uid="uid://c03vcctv5fp70" path="res://Game Components/Inventory/Instances/hairClip.tres" id="6_rtf2t"]
+[ext_resource type="Resource" uid="uid://dieesc6o8d0go" path="res://Game Components/Dialogue/Instances/TestUseItem.tres" id="7_keo6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6x18t"]
 size = Vector2(1301.4084, 20)
@@ -32,9 +36,8 @@ shape = SubResource("RectangleShape2D_w1v2m")
 position = Vector2(253, 604)
 
 [node name="InteractableTemplate" parent="." unique_id=151419543 instance=ExtResource("3_yvwml")]
-position = Vector2(254, 599)
-
-[node name="InteractableTemplate2" parent="." unique_id=723186269 instance=ExtResource("3_yvwml")]
-position = Vector2(1013, 597)
-autoTrigger = true
-deleteAfter = true
+position = Vector2(516, 597)
+NormalDialogue = ExtResource("4_bynis")
+gaveItemDialogue = ExtResource("5_u7vl6")
+correctItem = ExtResource("6_rtf2t")
+CorrectItemDialogue = ExtResource("7_keo6u")

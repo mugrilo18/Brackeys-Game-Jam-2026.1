@@ -5,13 +5,28 @@ class_name Interactable
 @export var autoTrigger:bool = false
 @export var deleteAfter:bool = false
 
-@export_category("Dialogue")
-@export var InteractDialogue:Dialogue
-@export var CorrectItemDialogue:Dialogue
-#Var correctItem:Item
+@export_group("Dialogue")
+@export var NormalDialogue:Dialogue #What usually plays when interacting
+@export var gaveItemDialogue:Dialogue #If a item is given, play this dialogue now
 
-#func checkItem(Item) -> Dialogue:
-	#if Item.ID != correctItem.ID:
-		#return LoadGenericItemText
-	#
-	#return CorrectItemDialogue
+@export_group("Item")
+@export var correctItem:Item
+@export var CorrectItemDialogue:Dialogue #If you use the correctItem
+@onready var WrongItemDialogue:Dialogue = preload("res://Game Components/Dialogue/Instances/UsedWrongItem.tres") #If you use the wrongItem, load generic text
+
+var gaveItem = false
+
+func giveItem():
+	gaveItem = true
+
+func getNormalDialogue() -> Dialogue:
+	if gaveItem:
+		return gaveItemDialogue
+	
+	return NormalDialogue
+
+func checkItem(item:Item) -> Dialogue:
+	if item.ID != correctItem.ID:
+		return WrongItemDialogue
+	
+	return CorrectItemDialogue
