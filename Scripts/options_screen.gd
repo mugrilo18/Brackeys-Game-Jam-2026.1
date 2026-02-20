@@ -11,9 +11,7 @@ extends Control
 @onready var fullscreen_btn: CheckButton = %FullscreenBtn
 @onready var options_screen: Panel = $"."
 
-@onready var screenSettings1 = $Settings/HSeparator2
-@onready var screenSettings2 = $Settings/ScreenSettings
-@onready var screenSettings3 = $"Settings/Screen Settings"
+@onready var screen_section = %ScreenSection
 
 func _ready() -> void:
 	master_percent.text = str(roundi(Audio.volumeMaster*100)) + "%"
@@ -26,17 +24,19 @@ func _ready() -> void:
 	
 	options_screen.visible = false
 	
+	if ScreenSettings.is_fullscreen == true:
+		fullscreen_btn.set_pressed_no_signal(true)
+	
 	if OS.has_feature("web"):
-		screenSettings1.visible = false
-		screenSettings2.visible = false
-		screenSettings3.visible = false
+		screen_section.visible = false
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
-		if options_screen.visible == false:
-			options_screen.visible = true
-			get_tree().paused = true
-		
+	if Input.is_action_just_pressed("ui_cancel") and options_screen.visible == false:
+		options_screen.visible = true
+		get_tree().paused = true
+	elif Input.is_action_just_pressed("ui_cancel") and options_screen.visible == true:
+		options_screen.visible = false
+		get_tree().paused = false
 
 func _on_music_slider_value_changed(value: float) -> void:
 	Audio.AudioMusic(value)

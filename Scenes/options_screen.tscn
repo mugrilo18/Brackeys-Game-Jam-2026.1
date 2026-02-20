@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4lrcnayadbvs"]
 
 [ext_resource type="Theme" uid="uid://c4vt0woh4670y" path="res://Assets/game_theme.tres" id="1_3u0t0"]
-[ext_resource type="Script" uid="uid://b0eyn0c6xh3sr" path="res://Scenes/options_screen.gd" id="1_7d126"]
+[ext_resource type="Script" uid="uid://b0eyn0c6xh3sr" path="res://Scripts/options_screen.gd" id="1_7d126"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3u0t0"]
 font_size = 32
@@ -161,24 +161,28 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_type_variation = &"SeparatorSettings"
 
-[node name="ScreenSettings" type="Label" parent="Settings" unique_id=38154927]
+[node name="ScreenSection" type="VBoxContainer" parent="Settings" unique_id=710068511]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ScreenSettings" type="Label" parent="Settings/ScreenSection" unique_id=38154927]
 layout_mode = 2
 text = "Screen"
 label_settings = SubResource("LabelSettings_itljm")
 horizontal_alignment = 1
 
-[node name="Screen Settings" type="VBoxContainer" parent="Settings" unique_id=574491961]
+[node name="Screen Settings" type="VBoxContainer" parent="Settings/ScreenSection" unique_id=574491961]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="FullscreenBtn" type="CheckButton" parent="Settings/Screen Settings" unique_id=1312327418]
+[node name="FullscreenBtn" type="CheckButton" parent="Settings/ScreenSection/Screen Settings" unique_id=1312327418]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 text = "Fullscreen"
 
-[node name="HSeparator3" type="HSeparator" parent="Settings" unique_id=1537681450]
+[node name="HSeparator3" type="HSeparator" parent="Settings/ScreenSection" unique_id=1537681450]
 layout_mode = 2
 theme_type_variation = &"SeparatorSettings"
 
@@ -201,6 +205,6 @@ text = "Back to menu"
 [connection signal="value_changed" from="Settings/Sound Settings/MusicSlider/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="Settings/Sound Settings/SFXSlider/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="Settings/Sound Settings/MasterSlider/MasterSlider" to="." method="_on_master_slider_value_changed"]
-[connection signal="toggled" from="Settings/Screen Settings/FullscreenBtn" to="." method="_on_fullscreen_btn_toggled"]
+[connection signal="toggled" from="Settings/ScreenSection/Screen Settings/FullscreenBtn" to="." method="_on_fullscreen_btn_toggled"]
 [connection signal="button_down" from="Settings/ConfirmBtn" to="." method="_on_confirm_btn_button_down"]
 [connection signal="button_down" from="Settings/BackMenuBtn" to="." method="_on_back_menu_btn_button_down"]
