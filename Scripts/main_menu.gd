@@ -7,6 +7,7 @@ extends Control
 func _ready() -> void:
 	quit_btn.pressed.connect(QuitGame)
 	play_btn.pressed.connect(PlayGame)
+	options_btn.pressed.connect(Settings)
 	
 	Audio.playMusic()
 	
@@ -21,3 +22,7 @@ func PlayGame():
 
 func QuitGame():
 	get_tree().quit()
+
+func Settings():
+	%OptionsScreen.visible = true
+	

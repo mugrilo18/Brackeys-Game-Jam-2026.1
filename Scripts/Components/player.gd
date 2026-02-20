@@ -24,10 +24,6 @@ func _ready() -> void:
 	interactSign.visible = false
 
 func _physics_process(delta: float) -> void:
-	if onDialogue or onInventory:
-		velocity.x = 0
-		return
-	
 	VerticalMovement(delta)
 	HorizontalMovement()
 
@@ -59,6 +55,10 @@ func VerticalMovement(delta):
 		velocity += get_gravity() * delta
 
 func HorizontalMovement():
+	if onDialogue or onInventory:
+		velocity.x = 0
+		return
+	
 	var direction := Input.get_axis("Left", "Right")
 	var curSpeed = RunSpeed if Input.is_action_pressed("Run") else WalkSpeed
 	
@@ -171,6 +171,8 @@ func endDialogue():
 	if interactableRef.deleteAfter:
 		interactableRef.queue_free()
 	
+	interactableRef = null
+
 	for area in interactArea.get_overlapping_areas():
 		if area is Interactable:
 			interactSign.visible = true

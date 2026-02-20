@@ -1,0 +1,71 @@
+[gd_resource type="Theme" format=3 uid="uid://c4vt0woh4670y"]
+
+[ext_resource type="FontFile" uid="uid://ycmqun67uy1h" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="1_cx1d5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cx1d5"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 6.0
+expand_margin_top = 6.0
+expand_margin_right = 6.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0u26"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_cx1d5"]
+color = Color(1, 1, 1, 1)
+thickness = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7lyt"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4q0ub"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epxpq"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[resource]
+MainMenuButton/base_type = &"Button"
+MainMenuButton/font_sizes/font_size = 32
+MainMenuButton/fonts/font = ExtResource("1_cx1d5")
+MainMenuButton/styles/hover = SubResource("StyleBoxFlat_cx1d5")
+MainMenuButton/styles/normal = SubResource("StyleBoxFlat_q0u26")
+SeparatorSettings/base_type = &"HSeparator"
+SeparatorSettings/constants/separation = 20
+SeparatorSettings/styles/separator = SubResource("StyleBoxLine_cx1d5")
+Settings/base_type = &"Panel"
+Settings/styles/panel = SubResource("StyleBoxFlat_f7lyt")
+SettingsButton/base_type = &"Button"
+SettingsButton/font_sizes/font_size = 24
+SettingsButton/styles/hover = SubResource("StyleBoxFlat_4q0ub")
+SettingsButton/styles/normal = SubResource("StyleBoxFlat_epxpq")
