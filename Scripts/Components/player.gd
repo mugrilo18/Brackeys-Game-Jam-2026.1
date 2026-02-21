@@ -165,6 +165,8 @@ func giveItemToPlayer(event:GiveItemEvent):
 	advanceDialogue()
 
 func endDialogue():
+	interactableRef.playSignal()
+	
 	if dialogueBox.visible:
 		dialogueBox.endDialogue()
 	

@@ -37,6 +37,18 @@ region = Rect2(66, 66, 32, 32)
 atlas = ExtResource("2_jkxu4")
 region = Rect2(99, 66, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_307e3"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(0, 99, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jr4j"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(33, 99, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s80eq"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(66, 99, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ppr8i"]
 atlas = ExtResource("2_jkxu4")
 region = Rect2(0, 33, 32, 32)
@@ -91,6 +103,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_307e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jr4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s80eq")
+}],
+"loop": true,
+"name": &"WakeUp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ppr8i")
 }, {
 "duration": 1.0,
@@ -132,8 +158,8 @@ script = ExtResource("1_jkxu4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=369066615]
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_jkxu4")
-animation = &"Walk"
-frame_progress = 0.05714364
+animation = &"WakeUp"
+frame_progress = 0.20730749
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=922175343]
 position = Vector2(9, 5)
@@ -182,6 +208,9 @@ texture = ExtResource("4_ismmh")
 
 [node name="AnimationEventTimer" type="Timer" parent="." unique_id=255890880]
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1360335978]
+position = Vector2(0, -217.075)
 
 [connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]
 [connection signal="area_exited" from="InteractArea" to="." method="_on_interact_area_area_exited"]

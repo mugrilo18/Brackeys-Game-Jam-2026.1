@@ -15,18 +15,32 @@ class_name Interactable
 @onready var WrongItemDialogue:Dialogue = preload("res://Game Components/Dialogue/Instances/UsedWrongItem.tres") #If you use the wrongItem, load generic text
 
 var gaveItem = false
+var currentDialogue:Dialogue = NormalDialogue
+
+signal correctItemTriggered
+signal interactedTriggered
 
 func giveItem():
 	gaveItem = true
 
 func getNormalDialogue() -> Dialogue:
 	if gaveItem:
+		currentDialogue = gaveItemDialogue
 		return gaveItemDialogue
 	
+	currentDialogue = NormalDialogue
 	return NormalDialogue
 
 func checkItem(item:Item) -> Dialogue:
 	if item.ID != correctItem.ID:
+		currentDialogue = WrongItemDialogue
 		return WrongItemDialogue
 	
+	currentDialogue = CorrectItemDialogue
 	return CorrectItemDialogue
+
+func playSignal():
+	if currentDialogue == CorrectItemDialogue:
+		correctItemTriggered.emit()
+	else:
+		interactedTriggered.emit()

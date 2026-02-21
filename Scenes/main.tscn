@@ -7,7 +7,7 @@
 
 [node name="Main" type="Node2D" unique_id=643756179]
 script = ExtResource("1_jjgbg")
-startingStage = "uid://cffnnxks8osk7"
+startingStage = "uid://c7d8mfinc408b"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=960141623]
 
