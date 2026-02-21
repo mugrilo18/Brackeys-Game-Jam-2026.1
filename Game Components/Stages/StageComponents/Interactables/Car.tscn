@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://xkbqtf5pmnw6"]
 
-[ext_resource type="Script" uid="uid://dedf1muwea8ki" path="res://Game Components/Stages/StageComponents/Interactables/interactable.gd" id="1_pugbq"]
+[ext_resource type="Script" uid="uid://dedf1muwea8ki" path="res://Scripts/Components/Stages/StageComponents/Interactable/interactable.gd" id="1_pugbq"]
 [ext_resource type="Texture2D" uid="uid://ctvpmkrltjucl" path="res://Assets/CarSmoke.png" id="2_30e2o"]
 [ext_resource type="Texture2D" uid="uid://bn8oes63wkqq2" path="res://Assets/car.png" id="2_pugbq"]
-[ext_resource type="Script" uid="uid://dub06jc0wj065" path="res://Game Components/Dialogue/Global/DialogueEvents.gd" id="2_v6bg2"]
-[ext_resource type="Script" uid="uid://cgkf07m1gvw0a" path="res://Game Components/Dialogue/Global/SpeechEvent.gd" id="3_5qc8e"]
-[ext_resource type="Script" uid="uid://chjd0eerw6550" path="res://Game Components/Dialogue/Global/DialogueRes.gd" id="4_2ngej"]
+[ext_resource type="Script" uid="uid://dub06jc0wj065" path="res://Scripts/Components/Dialogue/Global/DialogueEvents.gd" id="2_v6bg2"]
+[ext_resource type="Script" uid="uid://cgkf07m1gvw0a" path="res://Scripts/Components/Dialogue/Global/SpeechEvent.gd" id="3_5qc8e"]
+[ext_resource type="Script" uid="uid://chjd0eerw6550" path="res://Scripts/Components/Dialogue/Global/DialogueRes.gd" id="4_2ngej"]
 
 [sub_resource type="Resource" id="Resource_y72ey"]
 script = ExtResource("3_5qc8e")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dp6yta80hmioa"]
 
-[ext_resource type="Script" uid="uid://cpy3d5813k4wr" path="res://Game Components/Stages/StageComponents/player_spawner.gd" id="1_6hmlm"]
+[ext_resource type="Script" uid="uid://cpy3d5813k4wr" path="res://Scripts/Components/Stages/StageComponents/player_spawner.gd" id="1_6hmlm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pxgld"]
 radius = 66.0

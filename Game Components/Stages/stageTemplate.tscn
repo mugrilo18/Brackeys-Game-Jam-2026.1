@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cffnnxks8osk7"]
 
-[ext_resource type="Script" uid="uid://rchrrekougvt" path="res://Game Components/Stages/stage.gd" id="1_w1v2m"]
+[ext_resource type="Script" uid="uid://rchrrekougvt" path="res://Scripts/Components/Stages/stage.gd" id="1_w1v2m"]
 [ext_resource type="PackedScene" uid="uid://dp6yta80hmioa" path="res://Game Components/Stages/StageComponents/player_spawner.tscn" id="2_q645c"]
 [ext_resource type="PackedScene" uid="uid://dflm43232proc" path="res://Game Components/Stages/StageComponents/Interactables/interactableTemplate.tscn" id="3_yvwml"]
 [ext_resource type="Resource" uid="uid://0258ayakegfg" path="res://Game Components/Dialogue/Instances/TestNormal.tres" id="4_bynis"]

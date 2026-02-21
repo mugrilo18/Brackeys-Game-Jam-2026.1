@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d1bnaiq4iod8"]
 
-[ext_resource type="Script" uid="uid://nwni51fjyjx8" path="res://Game Components/UI/item_menu_bar.gd" id="1_8e7xj"]
+[ext_resource type="Script" uid="uid://nwni51fjyjx8" path="res://Scripts/Components/UI/item_menu_bar.gd" id="1_8e7xj"]
 [ext_resource type="PackedScene" uid="uid://bnyn66qw6rgfg" path="res://Game Components/UI/item_menu.tscn" id="1_m7x5v"]
 
 [sub_resource type="Animation" id="Animation_vlfwe"]

@@ -9,14 +9,14 @@ func _ready() -> void:
 	play_btn.pressed.connect(PlayGame)
 	options_btn.pressed.connect(Settings)
 	
-	Audio.playMusic()
+	AudioSettings.playMusic()
 	
 	if OS.has_feature("web"):
 		quit_btn.visible = false
 
 
 func PlayGame():
-	Audio.stopMusic()
+	AudioSettings.stopMusic()
 	Transition.transitionToScene("res://Scenes/starting_cutscene.tscn")
 
 func QuitGame():

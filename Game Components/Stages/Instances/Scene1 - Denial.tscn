@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://c7d8mfinc408b"]
 
-[ext_resource type="Script" uid="uid://rchrrekougvt" path="res://Game Components/Stages/stage.gd" id="1_eah62"]
+[ext_resource type="Script" uid="uid://rchrrekougvt" path="res://Scripts/Components/Stages/stage.gd" id="1_eah62"]
 [ext_resource type="PackedScene" uid="uid://dp6yta80hmioa" path="res://Game Components/Stages/StageComponents/player_spawner.tscn" id="2_3gdqh"]
 [ext_resource type="Texture2D" uid="uid://b5i8xu3wu0awh" path="res://Assets/Tree.png" id="2_bdsjg"]
 [ext_resource type="Texture2D" uid="uid://bu18pqno12imr" path="res://Assets/GroundOutside.png" id="2_vjwt8"]
 [ext_resource type="PackedScene" uid="uid://xkbqtf5pmnw6" path="res://Game Components/Stages/StageComponents/Interactables/Car.tscn" id="3_yqy4m"]
 [ext_resource type="Texture2D" uid="uid://v1d2xfb0oon0" path="res://Assets/Post.png" id="4_4hpl6"]
 [ext_resource type="PackedScene" path="res://Game Components/Stages/StageComponents/Interactables/FirstSceneTrigger.tscn" id="6_lmroa"]
-[ext_resource type="Script" uid="uid://dtberc4qbgff" path="res://Game Components/Stages/Instances/Scene1 - Denial.gd" id="7_7aydt"]
+[ext_resource type="Script" uid="uid://dtberc4qbgff" path="res://Scripts/Components/Stages/Instances/Scene1 - Denial.gd" id="7_7aydt"]
 [ext_resource type="FontFile" uid="uid://ycmqun67uy1h" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="7_bwk8s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6x18t"]

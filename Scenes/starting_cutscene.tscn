@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c6cixrv5kexf6"]
 
-[ext_resource type="Script" uid="uid://dc7v5uor2f30e" path="res://Scenes/starting_cutscene.gd" id="1_0bp7o"]
+[ext_resource type="Script" uid="uid://dc7v5uor2f30e" path="res://Scripts/Scenes/starting_cutscene.gd" id="1_0bp7o"]
 [ext_resource type="Texture2D" uid="uid://cl2k7jaqeskxj" path="res://Assets/StartingCutscene.png" id="1_rpu6l"]
 [ext_resource type="AudioStream" uid="uid://ckxixss5488vj" path="res://Assets/Audio/StartingCutscene/CarEngine.mp3" id="2_cy0mh"]
 [ext_resource type="AudioStream" uid="uid://bd7tbmaouybe6" path="res://Assets/Audio/StartingCutscene/CarEngineMuffled.wav" id="3_p34e2"]

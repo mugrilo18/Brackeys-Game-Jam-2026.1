@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://dieesc6o8d0go"]
 
-[ext_resource type="Script" uid="uid://dub06jc0wj065" path="res://Game Components/Dialogue/Global/DialogueEvents.gd" id="1_x4x85"]
-[ext_resource type="Script" uid="uid://chjd0eerw6550" path="res://Game Components/Dialogue/Global/DialogueRes.gd" id="2_3676b"]
-[ext_resource type="Script" uid="uid://cgkf07m1gvw0a" path="res://Game Components/Dialogue/Global/SpeechEvent.gd" id="2_shdw4"]
+[ext_resource type="Script" uid="uid://dub06jc0wj065" path="res://Scripts/Components/Dialogue/Global/DialogueEvents.gd" id="1_x4x85"]
+[ext_resource type="Script" uid="uid://chjd0eerw6550" path="res://Scripts/Components/Dialogue/Global/DialogueRes.gd" id="2_3676b"]
+[ext_resource type="Script" uid="uid://cgkf07m1gvw0a" path="res://Scripts/Components/Dialogue/Global/SpeechEvent.gd" id="2_shdw4"]
 
 [sub_resource type="Resource" id="Resource_t43qv"]
 script = ExtResource("2_shdw4")

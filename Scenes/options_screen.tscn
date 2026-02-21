@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4lrcnayadbvs"]
 
 [ext_resource type="Theme" uid="uid://c4vt0woh4670y" path="res://Assets/game_theme.tres" id="1_3u0t0"]
-[ext_resource type="Script" uid="uid://b0eyn0c6xh3sr" path="res://Scripts/options_screen.gd" id="1_7d126"]
+[ext_resource type="Script" uid="uid://b0eyn0c6xh3sr" path="res://Scripts/UI/options_screen.gd" id="1_7d126"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3u0t0"]
 font_size = 32

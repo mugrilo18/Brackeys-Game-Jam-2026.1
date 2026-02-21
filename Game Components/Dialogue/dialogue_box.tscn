@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://gy5qitxqttdf"]
 
-[ext_resource type="Script" uid="uid://bwi42s2lq2ovv" path="res://Game Components/Dialogue/dialogue_box.gd" id="1_0o8y7"]
+[ext_resource type="Script" uid="uid://bwi42s2lq2ovv" path="res://Scripts/Components/Dialogue/dialogue_box.gd" id="1_0o8y7"]
 [ext_resource type="FontFile" uid="uid://ycmqun67uy1h" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="1_oi0um"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jkxu4"]

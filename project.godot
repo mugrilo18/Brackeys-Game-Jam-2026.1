@@ -21,7 +21,7 @@ buses/default_bus_layout="uid://bmtc85xa8xod4"
 
 [autoload]
 
-Audio="*uid://bvmhpe1wxxt6l"
+AudioSettings="*uid://bvmhpe1wxxt6l"
 DialogueManager="*uid://cxf7g0vfvr4qt"
 InventoryManager="*uid://dlb14oln3u6w0"
 ScreenSettings="*uid://dxtjvthmb1ppv"
@@ -32,6 +32,15 @@ Transition="*uid://bngxwejgmdcfi"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="viewport"
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "yellow",
+"res://Game Components/": "green",
+"res://Scenes/": "blue",
+"res://Scripts/": "red"
+}
 
 [input]
 

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://caglkcqf1fblk"]
+
+[ext_resource type="Script" uid="uid://dcsyo4wm8w8e1" path="res://Scripts/Components/Stages/Instances/Scene5 - Depression.gd" id="1_sh4we"]
+[ext_resource type="PackedScene" uid="uid://dp6yta80hmioa" path="res://Game Components/Stages/StageComponents/player_spawner.tscn" id="2_en4h5"]
+[ext_resource type="Texture2D" uid="uid://bu18pqno12imr" path="res://Assets/GroundOutside.png" id="2_sh4we"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onwf8"]
+size = Vector2(6406.408, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_en4h5"]
+size = Vector2(40, 727)
+
+[node name="Depression" type="Node2D" unique_id=1988207926]
+script = ExtResource("1_sh4we")
+
+[node name="Ground" type="TextureRect" parent="." unique_id=569518745]
+custom_minimum_size = Vector2(640, 8)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 720.0
+offset_right = 1280.0
+offset_bottom = 728.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+texture = ExtResource("2_sh4we")
+stretch_mode = 1
+
+[node name="SceneCollisions" type="StaticBody2D" parent="." unique_id=491283722]
+position = Vector2(4, 637)
+
+[node name="GroundCollision" type="CollisionShape2D" parent="SceneCollisions" unique_id=1660387344]
+position = Vector2(3191.796, 95)
+shape = SubResource("RectangleShape2D_onwf8")
+
+[node name="LeftWallCollision" type="CollisionShape2D" parent="SceneCollisions" unique_id=2010004070]
+position = Vector2(-25, -280.5)
+shape = SubResource("RectangleShape2D_en4h5")
+
+[node name="RightWallColision" type="CollisionShape2D" parent="SceneCollisions" unique_id=555705520]
+position = Vector2(6417, -281)
+shape = SubResource("RectangleShape2D_en4h5")
+
+[node name="PlayerSpawner" parent="." unique_id=568985626 instance=ExtResource("2_en4h5")]
+position = Vector2(109, 611)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dflm43232proc"]
 
-[ext_resource type="Script" uid="uid://dedf1muwea8ki" path="res://Game Components/Stages/StageComponents/Interactables/interactable.gd" id="1_ad1ca"]
+[ext_resource type="Script" uid="uid://dedf1muwea8ki" path="res://Scripts/Components/Stages/StageComponents/Interactable/interactable.gd" id="1_ad1ca"]
 [ext_resource type="Texture2D" uid="uid://c2urnu4utweg5" path="res://icon.svg" id="1_v1jr4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vnug"]
