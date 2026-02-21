@@ -1,0 +1,327 @@
+[gd_scene format=3 uid="uid://c6cixrv5kexf6"]
+
+[ext_resource type="Script" uid="uid://dc7v5uor2f30e" path="res://Scenes/starting_cutscene.gd" id="1_0bp7o"]
+[ext_resource type="Texture2D" uid="uid://cl2k7jaqeskxj" path="res://Assets/StartingCutscene.png" id="1_rpu6l"]
+[ext_resource type="AudioStream" uid="uid://ckxixss5488vj" path="res://Assets/Audio/StartingCutscene/CarEngine.mp3" id="2_cy0mh"]
+[ext_resource type="AudioStream" uid="uid://bd7tbmaouybe6" path="res://Assets/Audio/StartingCutscene/CarEngineMuffled.wav" id="3_p34e2"]
+[ext_resource type="AudioStream" uid="uid://deo0ngqhkxvj5" path="res://Assets/Audio/StartingCutscene/DaThing.wav" id="4_xpxxt"]
+[ext_resource type="AudioStream" uid="uid://bf0voevxq5syg" path="res://Assets/Audio/StartingCutscene/CarCrash.wav" id="5_meuua"]
+[ext_resource type="FontFile" uid="uid://ycmqun67uy1h" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="7_nv70j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpu6l"]
+atlas = ExtResource("1_rpu6l")
+region = Rect2(0, 432, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bp7o"]
+atlas = ExtResource("1_rpu6l")
+region = Rect2(256, 432, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv70j"]
+atlas = ExtResource("1_rpu6l")
+region = Rect2(512, 432, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3xn6"]
+atlas = ExtResource("1_rpu6l")
+region = Rect2(768, 432, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ortyq"]
+atlas = ExtResource("1_rpu6l")
+region = Rect2(0, 144, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iogvd"]
+atlas = ExtResource("1_rpu6l")
+region = Rect2(256, 144, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5lh1"]
+atlas = ExtResource("1_rpu6l")
+region = Rect2(512, 144, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8c65"]
+atlas = ExtResource("1_rpu6l")
+region = Rect2(768, 144, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p81yb"]
+atlas = ExtResource("1_rpu6l")
+region = Rect2(0, 288, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8lq8"]
+atlas = ExtResource("1_rpu6l")
+region = Rect2(256, 288, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3pmx"]
+atlas = ExtResource("1_rpu6l")
+region = Rect2(512, 288, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gbva"]
+atlas = ExtResource("1_rpu6l")
+region = Rect2(768, 288, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy0mh"]
+atlas = ExtResource("1_rpu6l")
+region = Rect2(0, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p34e2"]
+atlas = ExtResource("1_rpu6l")
+region = Rect2(256, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpxxt"]
+atlas = ExtResource("1_rpu6l")
+region = Rect2(512, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_meuua"]
+atlas = ExtResource("1_rpu6l")
+region = Rect2(768, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h170f"]
+atlas = ExtResource("1_rpu6l")
+region = Rect2(0, 576, 256, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6xg21"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpu6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bp7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nv70j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3xn6")
+}],
+"loop": true,
+"name": &"CarGirl",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ortyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iogvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5lh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8c65")
+}],
+"loop": true,
+"name": &"CarIn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p81yb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8lq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3pmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gbva")
+}],
+"loop": true,
+"name": &"CarMonster",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy0mh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p34e2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpxxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_meuua")
+}],
+"loop": true,
+"name": &"CarOut",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h170f")
+}],
+"loop": true,
+"name": &"Monster",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_cy0mh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"CarOut"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_rpu6l"]
+resource_name = "cutscene"
+length = 18.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 5, 8, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [&"CarOut", &"CarIn", &"CarGirl", &"Monster", &"CarMonster"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 13.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node/CarEngine")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0503252,
+"start_offset": 0.0,
+"stream": ExtResource("2_cy0mh")
+}, {
+"end_offset": 0.93918943,
+"start_offset": 0.042674523,
+"stream": ExtResource("2_cy0mh")
+}, {
+"end_offset": 0.12595697,
+"start_offset": 0.06405531,
+"stream": ExtResource("3_p34e2")
+}, {
+"end_offset": 0.12595697,
+"start_offset": 0.06405531,
+"stream": ExtResource("3_p34e2")
+}, {
+"end_offset": 0.12595697,
+"start_offset": 0.06405531,
+"stream": ExtResource("3_p34e2")
+}, {
+"end_offset": 0.12595697,
+"start_offset": 0.06405531,
+"stream": ExtResource("3_p34e2")
+}, {
+"end_offset": 0.95256865,
+"start_offset": 0.06405531,
+"stream": ExtResource("3_p34e2")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.31465822,
+"stream": ExtResource("4_xpxxt")
+}],
+"times": PackedFloat32Array(0, 1.4666667, 2, 3.3666666, 4.733333, 6.0666666, 7.4333334, 8.933333)
+}
+tracks/2/use_blend = true
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node/CarCrash")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_meuua")
+}],
+"times": PackedFloat32Array(14)
+}
+tracks/3/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cy0mh"]
+_data = {
+&"RESET": SubResource("Animation_cy0mh"),
+&"cutscene": SubResource("Animation_rpu6l")
+}
+
+[node name="StartingCutscene" type="Node2D" unique_id=1047863802]
+script = ExtResource("1_0bp7o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1908340946]
+position = Vector2(640, 360)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_6xg21")
+animation = &"CarOut"
+autoplay = "CarOut"
+frame_progress = 0.9121399
+
+[node name="Node" type="Node" parent="." unique_id=1409745548]
+
+[node name="CarEngine" type="AudioStreamPlayer" parent="Node" unique_id=557196388]
+volume_db = -5.0
+
+[node name="CarCrash" type="AudioStreamPlayer" parent="Node" unique_id=349986938]
+volume_db = -0.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1862868214]
+libraries/ = SubResource("AnimationLibrary_cy0mh")
+autoplay = &"cutscene"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1742841549]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1536328978]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -325.055
+offset_top = -54.789978
+offset_right = -13.054565
+offset_bottom = -13.789978
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_nv70j")
+theme_override_font_sizes/font_size = 32
+text = "Press E to Skip"
+
+[node name="Appear" type="Timer" parent="CanvasLayer" unique_id=1680790240]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="CanvasLayer/Appear" to="." method="_on_appear_timeout"]

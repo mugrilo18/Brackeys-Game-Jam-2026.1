@@ -17,8 +17,7 @@ func _ready() -> void:
 
 func PlayGame():
 	Audio.stopMusic()
-	get_tree().change_scene_to_file("res://Scenes/main.tscn")
-	
+	Transition.transitionToScene("res://Scenes/starting_cutscene.tscn")
 
 func QuitGame():
 	get_tree().quit()

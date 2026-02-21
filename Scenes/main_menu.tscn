@@ -60,7 +60,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[node name="BackMenuBtn" parent="OptionsScreen/Settings" parent_id_path=PackedInt32Array(1949582789, 368416742) index="9" unique_id=641365156]
+[node name="BackMenuBtn" parent="OptionsScreen/Settings" parent_id_path=PackedInt32Array(1949582789, 368416742) index="7" unique_id=641365156]
 visible = false
 
 [editable path="OptionsScreen"]
