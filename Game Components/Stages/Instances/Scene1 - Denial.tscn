@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bu18pqno12imr" path="res://Assets/GroundOutside.png" id="2_vjwt8"]
 [ext_resource type="PackedScene" uid="uid://xkbqtf5pmnw6" path="res://Game Components/Stages/StageComponents/Interactables/Car.tscn" id="3_yqy4m"]
 [ext_resource type="Texture2D" uid="uid://v1d2xfb0oon0" path="res://Assets/Post.png" id="4_4hpl6"]
-[ext_resource type="PackedScene" path="res://Game Components/Stages/StageComponents/Interactables/FirstSceneTrigger.tscn" id="6_lmroa"]
+[ext_resource type="PackedScene" uid="uid://k6535o3yfm4k" path="res://Game Components/Stages/StageComponents/Interactables/FirstSceneTrigger.tscn" id="6_lmroa"]
 [ext_resource type="Script" uid="uid://dtberc4qbgff" path="res://Scripts/Components/Stages/Instances/Scene1 - Denial.gd" id="7_7aydt"]
 [ext_resource type="FontFile" uid="uid://ycmqun67uy1h" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="7_bwk8s"]
 
@@ -18,6 +18,11 @@ size = Vector2(40, 727)
 
 [node name="Denial" type="Node2D" unique_id=1567375503]
 script = ExtResource("1_eah62")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1490945034]
+limit_left = 0
+limit_right = 6400
+limit_bottom = 765
 
 [node name="Trees" type="TextureRect" parent="." unique_id=695917054]
 modulate = Color(1, 1, 1, 0.34901962)

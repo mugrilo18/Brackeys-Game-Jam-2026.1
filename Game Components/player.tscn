@@ -209,11 +209,6 @@ texture = ExtResource("4_ismmh")
 [node name="AnimationEventTimer" type="Timer" parent="." unique_id=255890880]
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1360335978]
-limit_left = 0
-limit_right = 6400
-limit_bottom = 765
-
 [connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]
 [connection signal="area_exited" from="InteractArea" to="." method="_on_interact_area_area_exited"]
 [connection signal="timeout" from="AnimationEventTimer" to="." method="_on_animation_event_timer_timeout"]

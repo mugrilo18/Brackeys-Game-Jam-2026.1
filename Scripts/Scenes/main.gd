@@ -31,6 +31,7 @@ func loadStage(stagePath:String):
 	
 	curStage = stageInstance
 	curStage.z_index = -1
+	curStage.getPlayer(player)
 	
 	setPlayerPosition()
 
