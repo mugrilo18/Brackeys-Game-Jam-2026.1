@@ -4,81 +4,96 @@
 [ext_resource type="PackedScene" uid="uid://dp6yta80hmioa" path="res://Game Components/Stages/StageComponents/player_spawner.tscn" id="2_3gdqh"]
 [ext_resource type="Texture2D" uid="uid://b5i8xu3wu0awh" path="res://Assets/Tree.png" id="2_bdsjg"]
 [ext_resource type="Texture2D" uid="uid://bu18pqno12imr" path="res://Assets/GroundOutside.png" id="2_vjwt8"]
-[ext_resource type="PackedScene" uid="uid://befm1j65jjh10" path="res://Game Components/Stages/StageComponents/Interactables/Car.tscn" id="3_yqy4m"]
-[ext_resource type="PackedScene" uid="uid://k6535o3yfm4k" path="res://Game Components/Stages/StageComponents/Interactables/FirstSceneTrigger.tscn" id="6_lmroa"]
+[ext_resource type="PackedScene" uid="uid://xkbqtf5pmnw6" path="res://Game Components/Stages/StageComponents/Interactables/Car.tscn" id="3_yqy4m"]
+[ext_resource type="Texture2D" uid="uid://v1d2xfb0oon0" path="res://Assets/Post.png" id="4_4hpl6"]
+[ext_resource type="PackedScene" path="res://Game Components/Stages/StageComponents/Interactables/FirstSceneTrigger.tscn" id="6_lmroa"]
 [ext_resource type="Script" uid="uid://dtberc4qbgff" path="res://Game Components/Stages/Instances/Scene1 - Denial.gd" id="7_7aydt"]
 [ext_resource type="FontFile" uid="uid://ycmqun67uy1h" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="7_bwk8s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6x18t"]
-size = Vector2(1301.4084, 20)
+size = Vector2(6406.408, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1v2m"]
 size = Vector2(40, 727)
 
-[node name="Stage" type="Node2D" unique_id=1567375503]
+[node name="Denial" type="Node2D" unique_id=1567375503]
 script = ExtResource("1_eah62")
 
 [node name="Trees" type="TextureRect" parent="." unique_id=695917054]
 modulate = Color(1, 1, 1, 0.34901962)
+custom_minimum_size = Vector2(100, 128)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1332.0001
-offset_top = 48.999992
-offset_right = -572.69617
-offset_bottom = 177.0
+offset_top = 76.0
+offset_right = 1280.0
+offset_bottom = 204.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 5)
 texture = ExtResource("2_bdsjg")
 stretch_mode = 1
 
+[node name="Post" type="TextureRect" parent="." unique_id=712949999]
+custom_minimum_size = Vector2(42, 95)
+offset_left = 106.0
+offset_top = 253.99998
+offset_right = 1386.0
+offset_bottom = 349.0
+scale = Vector2(5, 5)
+texture = ExtResource("4_4hpl6")
+stretch_mode = 1
+
 [node name="Ground" type="TextureRect" parent="." unique_id=2099248494]
+custom_minimum_size = Vector2(640, 8)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1055.0
-offset_top = 705.00006
-offset_right = -563.49603
-offset_bottom = 713.00006
+offset_top = 720.0
+offset_right = 1280.0
+offset_bottom = 728.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 5)
 texture = ExtResource("2_vjwt8")
 stretch_mode = 1
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1395649167]
+[node name="SceneCollisions" type="StaticBody2D" parent="." unique_id=1395649167]
 position = Vector2(4, 637)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1012372228]
-position = Vector2(639.2958, 77)
+[node name="GroundCollision" type="CollisionShape2D" parent="SceneCollisions" unique_id=1012372228]
+position = Vector2(3191.796, 95)
 shape = SubResource("RectangleShape2D_6x18t")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1767233020]
-position = Vector2(-10, -280.5)
+[node name="LeftWallCollision" type="CollisionShape2D" parent="SceneCollisions" unique_id=1767233020]
+position = Vector2(-25, -280.5)
 shape = SubResource("RectangleShape2D_w1v2m")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=753951446]
-position = Vector2(1278, -280)
+[node name="RightWallColision" type="CollisionShape2D" parent="SceneCollisions" unique_id=753951446]
+position = Vector2(6417, -281)
 shape = SubResource("RectangleShape2D_w1v2m")
 
 [node name="PlayerSpawner" parent="." unique_id=568985626 instance=ExtResource("2_3gdqh")]
-position = Vector2(850, 609)
+position = Vector2(1393, 611)
+
+[node name="InteractableTemplate" parent="PlayerSpawner" unique_id=2072491402 instance=ExtResource("6_lmroa")]
+position = Vector2(4, 16)
 
 [node name="Car" parent="." unique_id=151419543 instance=ExtResource("3_yqy4m")]
-position = Vector2(387.99988, 385)
+position = Vector2(500, 390)
 scale = Vector2(5, 5)
 
-[node name="InteractableTemplate" parent="." unique_id=2072491402 instance=ExtResource("6_lmroa")]
-position = Vector2(854, 625)
-
-[node name="SpecificEvents" type="Node2D" parent="." unique_id=371401919]
+[node name="SpecificEvents" type="Node2D" parent="." unique_id=371401919 node_paths=PackedStringArray("tutorial_move", "tutorial_interact")]
 position = Vector2(768, 458)
 script = ExtResource("7_7aydt")
+tutorial_move = NodePath("TutorialMove")
+tutorial_interact = NodePath("TutorialInteract")
 
-[node name="Label" type="Label" parent="SpecificEvents" unique_id=258393349]
-offset_right = 332.0
-offset_bottom = 41.0
+[node name="TutorialMove" type="Label" parent="SpecificEvents" unique_id=258393349]
+offset_left = 393.0
+offset_top = 2.0
+offset_right = 857.0
+offset_bottom = 43.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
@@ -86,7 +101,7 @@ theme_override_fonts/font = ExtResource("7_bwk8s")
 theme_override_font_sizes/font_size = 32
 text = "Press A and D to Move"
 
-[node name="Label2" type="Label" parent="SpecificEvents" unique_id=1969497416]
+[node name="TutorialInteract" type="Label" parent="SpecificEvents" unique_id=1969497416]
 offset_left = -623.0
 offset_top = -61.0
 offset_right = -223.0
@@ -98,4 +113,4 @@ theme_override_fonts/font = ExtResource("7_bwk8s")
 theme_override_font_sizes/font_size = 32
 text = "Press E to interact"
 
-[connection signal="interactedTriggered" from="InteractableTemplate" to="SpecificEvents" method="_on_interactable_template_interacted_triggered"]
+[connection signal="interactedTriggered" from="PlayerSpawner/InteractableTemplate" to="SpecificEvents" method="_on_interactable_template_interacted_triggered"]

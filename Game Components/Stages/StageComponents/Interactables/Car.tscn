@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://befm1j65jjh10"]
+[gd_scene format=3 uid="uid://xkbqtf5pmnw6"]
 
 [ext_resource type="Script" uid="uid://dedf1muwea8ki" path="res://Game Components/Stages/StageComponents/Interactables/interactable.gd" id="1_pugbq"]
 [ext_resource type="Texture2D" uid="uid://ctvpmkrltjucl" path="res://Assets/CarSmoke.png" id="2_30e2o"]
@@ -53,6 +53,7 @@ texture = ExtResource("2_30e2o")
 process_material = SubResource("ParticleProcessMaterial_v6bg2")
 
 [node name="sprite" type="Sprite2D" parent="." unique_id=1540541180]
+position = Vector2(-3, 40)
 texture = ExtResource("2_pugbq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=554247878]

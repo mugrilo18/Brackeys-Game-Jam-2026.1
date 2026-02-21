@@ -210,7 +210,9 @@ texture = ExtResource("4_ismmh")
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1360335978]
-position = Vector2(0, -217.075)
+limit_left = 0
+limit_right = 6400
+limit_bottom = 765
 
 [connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]
 [connection signal="area_exited" from="InteractArea" to="." method="_on_interact_area_area_exited"]

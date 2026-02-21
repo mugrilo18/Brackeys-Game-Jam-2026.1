@@ -1,9 +1,12 @@
 extends Node2D
 
+@export var tutorial_move: Label
+@export var tutorial_interact: Label
+
 func _ready() -> void:
-	$Label.visible = false
-	$Label2.visible = false
+	tutorial_move.visible = false
+	tutorial_interact.visible = false
 
 func _on_interactable_template_interacted_triggered() -> void:
-	$Label.visible = true
-	$Label2.visible = true
+	tutorial_move.visible = true
+	tutorial_interact.visible = true
