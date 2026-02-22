@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 class_name Player
 
+@export var dialogueIcon:Texture
+@export var hideIcon:Texture
+@onready var interactIcon = $Panel/TextureRect
+
 @export var game:MainGame
 
 @onready var playerSprite = $AnimatedSprite2D
@@ -9,6 +13,8 @@ class_name Player
 @onready var dialogueBox = $DialogueBox
 @onready var interactSign = $Panel
 @onready var animationEventTimer = $AnimationEventTimer
+
+@onready var stepAudio = $Audio/Steps
 
 var playerKey = "player"
 
@@ -19,6 +25,9 @@ var interactableRef:Interactable = null
 var onDialogue = false
 
 var onInventory = false
+
+var hidingRef:HidingSpot = null
+var isHiding = false
 
 func _ready() -> void:
 	interactSign.visible = false
@@ -32,6 +41,24 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	flipPlayer()
 	animatePlayer()
+	playStepSound()
+
+func playStepSound():
+	var stepAnimations = playerSprite.animation != "Walk" and playerSprite.animation != "Run"
+	
+	if stepAnimations:
+		stepAudio.stop()
+		return
+	
+	if playerSprite.animation == "Walk":
+		stepAudio.pitch_scale = 1.0
+	elif playerSprite.animation == "Run":
+		stepAudio.pitch_scale = 1.5
+	
+	if stepAudio.playing:
+		return
+	
+	stepAudio.play()
 
 func flipPlayer():
 	if velocity.x < 0:
@@ -55,7 +82,7 @@ func VerticalMovement(delta):
 		velocity += get_gravity() * delta
 
 func HorizontalMovement():
-	if onDialogue or onInventory:
+	if onDialogue or onInventory or isHiding:
 		velocity.x = 0
 		return
 	
@@ -87,6 +114,8 @@ func startDialogue():
 	
 	DialogueManager.setNewDialogue(dialogue)
 	setDialogue()
+	
+	interactableRef.playStartSignal()
 
 func setDialogue():
 	playerSprite.play("Idle")
@@ -106,7 +135,7 @@ func setDialogue():
 
 func setSpeechDialogue(event:SpeechEvent):
 	if event.entityKey != playerKey:
-		#Play Event on another object
+		game.playNPCEvent(event)
 		return
 	
 	if !onDialogue:
@@ -122,6 +151,11 @@ func setAnimationDialogue(event:AnimationEvent):
 	if dialogueBox.visible:
 		dialogueBox.endDialogue()
 	
+	#PlayEvent on other object if the key is diferent
+	if event.entityKey != playerKey:
+		game.playNPCEvent(event)
+		return
+	
 	#SetTimer
 	var time = event.animationTime
 	
@@ -133,11 +167,6 @@ func setAnimationDialogue(event:AnimationEvent):
 	
 	animationEventTimer.wait_time = time
 	animationEventTimer.start()
-	
-	#PlayEvent on other object if the key is diferent
-	if event.entityKey != playerKey:
-		#Play Event on another object
-		return
 	
 	#PLAY EVENT
 	
@@ -153,7 +182,7 @@ func setAnimationDialogue(event:AnimationEvent):
 		return
 	
 	var tween = create_tween()
-	tween.tween_property(self, "global_position", event.newPos, time)
+	tween.tween_property(self, "global_position:x", event.newPos.x, time)
 
 func giveItemToPlayer(event:GiveItemEvent):
 	interactableRef.giveItem()
@@ -223,18 +252,45 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("OpenInventory") and interactableRef != null:
 		checkInventoryInput()
+	
+	if Input.is_action_just_pressed("Interact") and hidingRef != null:
+		hidePlayer()
+
+func hidePlayer():
+	isHiding = !isHiding
+	
+	visible = !isHiding
+	
+	if isHiding:
+		hidingRef.play("Hiding")
+		var stream = load("res://Assets/Audio/Game/MonsterAppear.wav")
+		AudioSettings.setNewMusic(stream, 0.01)
+	else:
+		hidingRef.play("Idle")
 
 func _on_interact_area_area_entered(area: Area2D) -> void:
 	if area is Interactable and !onDialogue:
 		interactableRef = area
 		interactSign.visible = true
 		
+		interactIcon.texture = dialogueIcon
+		
 		if area.autoTrigger: 
 			startDialogue()
+	
+	if area.is_in_group("Hiding"):
+		interactIcon.texture = hideIcon
+		interactSign.visible = true
+		
+		hidingRef = area.get_parent()
 
 func _on_interact_area_area_exited(area: Area2D) -> void:
 	if area is Interactable and !onDialogue:
 		interactableRef = null
+		interactSign.visible = false
+	
+	if area.is_in_group("Hiding"):
+		hidingRef = null
 		interactSign.visible = false
 
 func _on_animation_event_timer_timeout() -> void:

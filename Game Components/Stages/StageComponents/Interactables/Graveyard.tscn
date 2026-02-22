@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b2dx0yexinw0h"]
+
+[ext_resource type="Script" uid="uid://dedf1muwea8ki" path="res://Scripts/Components/Stages/StageComponents/Interactable/interactable.gd" id="1_mqpw2"]
+[ext_resource type="Script" uid="uid://dub06jc0wj065" path="res://Scripts/Components/Dialogue/Global/DialogueEvents.gd" id="2_dye71"]
+[ext_resource type="Texture2D" uid="uid://k7p7aas34eb3" path="res://Assets/Graveyard.png" id="2_egvv8"]
+[ext_resource type="Script" uid="uid://cgkf07m1gvw0a" path="res://Scripts/Components/Dialogue/Global/SpeechEvent.gd" id="3_pa6jg"]
+[ext_resource type="Script" uid="uid://chjd0eerw6550" path="res://Scripts/Components/Dialogue/Global/DialogueRes.gd" id="4_3ioq7"]
+
+[sub_resource type="Resource" id="Resource_4xl0h"]
+script = ExtResource("3_pa6jg")
+message = "A graveyard, at the middle of the road? Weird..."
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_0368e"]
+script = ExtResource("3_pa6jg")
+message = "It's locked, I think I can open it with my hair clip."
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_gmxdk"]
+script = ExtResource("3_pa6jg")
+message = "Where's my hair clip?!"
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_vv0lo"]
+script = ExtResource("3_pa6jg")
+message = "Oh no, i left it in the car... where that thing is..."
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_kc66s"]
+script = ExtResource("3_pa6jg")
+message = "Come on Millie, be brave"
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_ejxbc"]
+script = ExtResource("4_3ioq7")
+ev = Array[ExtResource("2_dye71")]([SubResource("Resource_4xl0h"), SubResource("Resource_0368e"), SubResource("Resource_gmxdk"), SubResource("Resource_vv0lo"), SubResource("Resource_kc66s")])
+metadata/_custom_type_script = "uid://chjd0eerw6550"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vnug"]
+size = Vector2(285, 424)
+
+[node name="InteractableTemplate" type="Area2D" unique_id=151419543]
+script = ExtResource("1_mqpw2")
+NormalDialogue = SubResource("Resource_ejxbc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=554247878]
+position = Vector2(-356.5, 137)
+shape = SubResource("RectangleShape2D_6vnug")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1459239946]
+scale = Vector2(5, 5)
+texture = ExtResource("2_egvv8")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

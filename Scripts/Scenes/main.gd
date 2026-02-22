@@ -10,10 +10,21 @@ class_name MainGame
 @export_file("*.tscn") var startingStage:String
 var curStage:Stage
 
+var newSpawnID:int
+
 func _ready() -> void:
-	loadStage(startingStage)
+	if PlayerData.lastStagePath == "":
+		loadStage(startingStage)
+	else:
+		loadStage(PlayerData.lastStagePath)
 
 #STAGE LOGIC
+func transitionStage(stagePath:String, spawnID:int):
+	newSpawnID = spawnID
+	removeStage()
+	call_deferred("loadStage", stagePath)
+	Transition.playFadeOut()
+
 func removeStage():
 	if curStage == null:
 		return
@@ -32,11 +43,13 @@ func loadStage(stagePath:String):
 	curStage = stageInstance
 	curStage.z_index = -1
 	curStage.getPlayer(player)
+	curStage.getGame(self)
 	
 	setPlayerPosition()
+	PlayerData.lastStagePath = stagePath
 
 func setPlayerPosition():
-	player.global_position = curStage.GetPlayerPos()
+	player.global_position = curStage.GetPlayerPos(newSpawnID)
 
 #INVENTORY LOGIC
 func updateInventoryUI():
@@ -50,3 +63,7 @@ func openInventoryUI():
 
 func closeInventoryUI():
 	inventoryUI.setBoxInactive()
+
+#NPC LOGIC
+func playNPCEvent(event:DialogueEvents):
+	curStage.playNPCEvent(event)

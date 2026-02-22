@@ -1,9 +1,19 @@
 [gd_scene format=3 uid="uid://ogh1u7w8npho"]
 
 [ext_resource type="Script" uid="uid://71rhbe04lo70" path="res://Scripts/Components/Stages/Instances/Scene3 - Anger.gd" id="1_0p532"]
+[ext_resource type="Script" uid="uid://rchrrekougvt" path="res://Scripts/Components/Stages/stage.gd" id="1_n47ap"]
 [ext_resource type="Texture2D" uid="uid://b5i8xu3wu0awh" path="res://Assets/Tree.png" id="1_p3con"]
+[ext_resource type="AudioStream" uid="uid://cxtcqevcf73ph" path="res://Assets/Audio/Game/Forest.wav" id="2_77kju"]
 [ext_resource type="Texture2D" uid="uid://bu18pqno12imr" path="res://Assets/GroundOutside.png" id="2_n47ap"]
-[ext_resource type="PackedScene" uid="uid://dp6yta80hmioa" path="res://Game Components/Stages/StageComponents/player_spawner.tscn" id="3_n47ap"]
+[ext_resource type="PackedScene" uid="uid://dirw8l414mtc5" path="res://Game Components/Stages/StageComponents/stage_changer.tscn" id="4_0p532"]
+[ext_resource type="PackedScene" uid="uid://b2dx0yexinw0h" path="res://Game Components/Stages/StageComponents/Interactables/Graveyard.tscn" id="6_bvsav"]
+[ext_resource type="Resource" uid="uid://c03vcctv5fp70" path="res://Game Components/Inventory/Instances/hairClip.tres" id="7_f736v"]
+[ext_resource type="Script" uid="uid://dub06jc0wj065" path="res://Scripts/Components/Dialogue/Global/DialogueEvents.gd" id="8_jchbg"]
+[ext_resource type="FontFile" uid="uid://ycmqun67uy1h" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="8_vgr4r"]
+[ext_resource type="Script" uid="uid://cgkf07m1gvw0a" path="res://Scripts/Components/Dialogue/Global/SpeechEvent.gd" id="9_svj8p"]
+[ext_resource type="Script" uid="uid://chjd0eerw6550" path="res://Scripts/Components/Dialogue/Global/DialogueRes.gd" id="10_v1t7r"]
+[ext_resource type="Texture2D" uid="uid://bymcf8iqgl4m0" path="res://Assets/GateCemiterySpriteSheet.png" id="11_jchbg"]
+[ext_resource type="AudioStream" uid="uid://dbscp6debh0qy" path="res://Assets/Audio/Game/Gate.wav" id="14_svj8p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3con"]
 size = Vector2(6406.408, 20)
@@ -11,12 +21,86 @@ size = Vector2(6406.408, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n47ap"]
 size = Vector2(40, 727)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77kju"]
+size = Vector2(370, 539.5)
+
+[sub_resource type="Resource" id="Resource_0wtaq"]
+script = ExtResource("9_svj8p")
+message = "Alright, lets open this gate."
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_cfrn7"]
+script = ExtResource("9_svj8p")
+message = "..."
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_1t4bv"]
+script = ExtResource("9_svj8p")
+message = "Got it!"
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_tprxi"]
+script = ExtResource("10_v1t7r")
+ev = Array[ExtResource("8_jchbg")]([SubResource("Resource_0wtaq"), SubResource("Resource_cfrn7"), SubResource("Resource_1t4bv")])
+metadata/_custom_type_script = "uid://chjd0eerw6550"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svj8p"]
+atlas = ExtResource("11_jchbg")
+region = Rect2(0, 0, 253, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1t7r"]
+atlas = ExtResource("11_jchbg")
+region = Rect2(253, 0, 253, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wtaq"]
+atlas = ExtResource("11_jchbg")
+region = Rect2(506, 0, 253, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfrn7"]
+atlas = ExtResource("11_jchbg")
+region = Rect2(759, 0, 253, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t4bv"]
+atlas = ExtResource("11_jchbg")
+region = Rect2(1012, 0, 253, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tprxi"]
+atlas = ExtResource("11_jchbg")
+region = Rect2(1265, 0, 253, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pwa1a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svj8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1t7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wtaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfrn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1t4bv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tprxi")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.0
+}]
+
 [node name="Anger" type="Node2D" unique_id=1988207926]
-script = ExtResource("1_0p532")
+script = ExtResource("1_n47ap")
+stageAmbiance = ExtResource("2_77kju")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1376005633]
 limit_left = 0
-limit_right = 6400
+limit_right = 2064
 limit_bottom = 765
 
 [node name="Trees" type="TextureRect" parent="." unique_id=1184951966]
@@ -26,7 +110,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 76.0
-offset_right = 1280.0
+offset_right = 187.4
 offset_bottom = 204.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -60,8 +144,59 @@ position = Vector2(-25, -280.5)
 shape = SubResource("RectangleShape2D_n47ap")
 
 [node name="RightWallColision" type="CollisionShape2D" parent="SceneCollisions" unique_id=1674940240]
-position = Vector2(6417, -281)
+position = Vector2(1381, -225)
 shape = SubResource("RectangleShape2D_n47ap")
 
-[node name="PlayerSpawner" parent="." unique_id=568985626 instance=ExtResource("3_n47ap")]
-position = Vector2(107, 611)
+[node name="NPCs" type="Node2D" parent="." unique_id=871576433]
+
+[node name="StageChangers" type="Node2D" parent="." unique_id=1793990028]
+
+[node name="Forest" parent="StageChangers" unique_id=807585394 instance=ExtResource("4_0p532")]
+position = Vector2(172, 632)
+stageToTransition = "uid://cq2vitu84h84p"
+spawnID = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageChangers/Forest" unique_id=1804698344]
+position = Vector2(-303, -181)
+shape = SubResource("RectangleShape2D_77kju")
+debug_color = Color(0.31967887, 0.6253829, 0, 0.41960785)
+
+[node name="InteractableTemplate" parent="." unique_id=151419543 instance=ExtResource("6_bvsav")]
+position = Vector2(1451, 364)
+correctItem = ExtResource("7_f736v")
+CorrectItemDialogue = SubResource("Resource_tprxi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=694096773]
+visible = false
+position = Vector2(1451, 364)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_pwa1a")
+frame = 5
+frame_progress = 1.0
+
+[node name="StageEvents" type="Node2D" parent="." unique_id=1413317399 node_paths=PackedStringArray("interactableGate", "gateOpen")]
+script = ExtResource("1_0p532")
+interactableGate = NodePath("../InteractableTemplate")
+gateOpen = NodePath("../AnimatedSprite2D")
+
+[node name="TutorialInventory" type="Label" parent="StageEvents" unique_id=584349664]
+offset_left = 758.0
+offset_top = 368.0
+offset_right = 1438.0
+offset_bottom = 453.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("8_vgr4r")
+theme_override_font_sizes/font_size = 32
+text = "Press tab to open the inventory
+Press E to use the item"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StageEvents" unique_id=467964260]
+stream = ExtResource("14_svj8p")
+volume_db = -5.0
+
+[connection signal="stageChanged" from="StageChangers/Forest" to="." method="_on_stage_changer_stage_changed"]
+[connection signal="correctItemTriggered" from="InteractableTemplate" to="StageEvents" method="_on_interactable_template_correct_item_triggered"]

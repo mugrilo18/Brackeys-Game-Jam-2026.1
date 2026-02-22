@@ -3,6 +3,43 @@
 [ext_resource type="Script" uid="uid://c7hs83rvl77l5" path="res://Scripts/UI/main_menu.gd" id="1_28flt"]
 [ext_resource type="PackedScene" uid="uid://b4lrcnayadbvs" path="res://Scenes/options_screen.tscn" id="2_48xlc"]
 [ext_resource type="Theme" uid="uid://c4vt0woh4670y" path="res://Assets/game_theme.tres" id="3_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://be8vvt5fas4ns" path="res://Assets/title.png" id="4_ce3w2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n45e2"]
+atlas = ExtResource("4_ce3w2")
+region = Rect2(0, 0, 111, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opfnp"]
+atlas = ExtResource("4_ce3w2")
+region = Rect2(111, 0, 111, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp0ys"]
+atlas = ExtResource("4_ce3w2")
+region = Rect2(222, 0, 111, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhxw7"]
+atlas = ExtResource("4_ce3w2")
+region = Rect2(333, 0, 111, 45)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ehe0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n45e2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opfnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cp0ys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhxw7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="MainMenu" type="Control" unique_id=718055170 node_paths=PackedStringArray("play_btn", "quit_btn", "options_btn")]
 layout_mode = 3
@@ -16,6 +53,25 @@ play_btn = NodePath("ContainerButtons/PlayBtn")
 quit_btn = NodePath("ContainerButtons/QuitBtn")
 options_btn = NodePath("ContainerButtons/OptionsBtn")
 
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1299925317]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -197.69
+offset_right = 20.0
+offset_bottom = -157.68991
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer" unique_id=1402645527]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_1ehe0")
+autoplay = "default"
+
 [node name="ContainerButtons" type="VBoxContainer" parent="." unique_id=1072121948]
 layout_mode = 1
 anchors_preset = 8
@@ -24,9 +80,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -82.0
-offset_top = -143.5
+offset_top = -9.545013
 offset_right = 82.0
-offset_bottom = 143.5
+offset_bottom = 277.45605
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 70

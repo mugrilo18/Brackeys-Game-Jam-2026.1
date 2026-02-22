@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dirw8l414mtc5"]
+
+[ext_resource type="Script" uid="uid://deq1c4tdr6odr" path="res://Game Components/Stages/StageComponents/stage_changer.gd" id="1_qflhm"]
+
+[node name="StageChanger" type="Area2D" unique_id=807585394]
+script = ExtResource("1_qflhm")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

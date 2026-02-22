@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dub06jc0wj065" path="res://Scripts/Components/Dialogue/Global/DialogueEvents.gd" id="2_v6bg2"]
 [ext_resource type="Script" uid="uid://cgkf07m1gvw0a" path="res://Scripts/Components/Dialogue/Global/SpeechEvent.gd" id="3_5qc8e"]
 [ext_resource type="Script" uid="uid://chjd0eerw6550" path="res://Scripts/Components/Dialogue/Global/DialogueRes.gd" id="4_2ngej"]
+[ext_resource type="Script" uid="uid://cftkvrfd2e4yi" path="res://Scripts/Components/Dialogue/Global/AnimationEvent.gd" id="4_5qc8e"]
 
 [sub_resource type="Resource" id="Resource_y72ey"]
 script = ExtResource("3_5qc8e")
@@ -17,9 +18,28 @@ script = ExtResource("3_5qc8e")
 message = "Don't worry mommy, i'll..."
 metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
 
+[sub_resource type="Resource" id="Resource_2ngej"]
+script = ExtResource("4_5qc8e")
+animationStr = "Appear"
+entityKey = "monster"
+metadata/_custom_type_script = "uid://cftkvrfd2e4yi"
+
+[sub_resource type="Resource" id="Resource_5qc8e"]
+script = ExtResource("3_5qc8e")
+message = "What the..."
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_fl1bv"]
+script = ExtResource("4_5qc8e")
+animationStr = "WalkBack"
+flipSprite = true
+newPos = Vector2(823, 626)
+animationTime = 1.0
+metadata/_custom_type_script = "uid://cftkvrfd2e4yi"
+
 [sub_resource type="Resource" id="Resource_e8dyk"]
 script = ExtResource("4_2ngej")
-ev = Array[ExtResource("2_v6bg2")]([SubResource("Resource_y72ey"), SubResource("Resource_mv0qb")])
+ev = Array[ExtResource("2_v6bg2")]([SubResource("Resource_y72ey"), SubResource("Resource_mv0qb"), SubResource("Resource_2ngej"), SubResource("Resource_5qc8e"), SubResource("Resource_fl1bv")])
 metadata/_custom_type_script = "uid://chjd0eerw6550"
 
 [sub_resource type="Curve" id="Curve_kbmcu"]

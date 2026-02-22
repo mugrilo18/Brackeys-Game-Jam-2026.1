@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://cq2vitu84h84p"]
+
+[ext_resource type="Script" uid="uid://rchrrekougvt" path="res://Scripts/Components/Stages/stage.gd" id="1_m0try"]
+[ext_resource type="AudioStream" uid="uid://mejld8iq1v7r" path="res://Assets/Audio/Game/MonsterAppear.wav" id="2_7nop1"]
+[ext_resource type="Texture2D" uid="uid://b5i8xu3wu0awh" path="res://Assets/Tree.png" id="2_d0n5p"]
+[ext_resource type="Texture2D" uid="uid://bwgee10j4eyyf" path="res://Assets/ABUBLE.png" id="3_wvbb3"]
+[ext_resource type="PackedScene" uid="uid://d4cgausc078vd" path="res://Game Components/Stages/StageComponents/HidingSpots/Bush.tscn" id="4_d0n5p"]
+[ext_resource type="Texture2D" uid="uid://bu18pqno12imr" path="res://Assets/GroundOutside.png" id="4_wvbb3"]
+[ext_resource type="PackedScene" uid="uid://bwyfcyhgqqrnh" path="res://Game Components/NPCs/monster.tscn" id="5_8r2di"]
+[ext_resource type="PackedScene" uid="uid://dirw8l414mtc5" path="res://Game Components/Stages/StageComponents/stage_changer.tscn" id="6_a74cj"]
+[ext_resource type="FontFile" uid="uid://ycmqun67uy1h" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="9_8r2di"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3an3p"]
+size = Vector2(6639, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8idl6"]
+size = Vector2(40, 727)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eccx6"]
+size = Vector2(370, 539.5)
+
+[node name="Anger" type="Node2D" unique_id=1988207926]
+script = ExtResource("1_m0try")
+stageAmbiance = ExtResource("2_7nop1")
+
+[node name="Trees2" type="TextureRect" parent="." unique_id=1641864472]
+custom_minimum_size = Vector2(100, 128)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -356.55554
+offset_top = -175.0
+offset_right = 6785.0
+offset_bottom = 1107.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wvbb3")
+stretch_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1896039844]
+limit_left = 0
+limit_right = 6400
+limit_bottom = 765
+
+[node name="Trees" type="TextureRect" parent="." unique_id=334927814]
+modulate = Color(1, 1, 1, 0.60784316)
+custom_minimum_size = Vector2(100, 128)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 76.0
+offset_right = 1280.0
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+texture = ExtResource("2_d0n5p")
+stretch_mode = 1
+
+[node name="Bush5" parent="." unique_id=1678058006 instance=ExtResource("4_d0n5p")]
+position = Vector2(498, 664)
+
+[node name="Bush4" parent="." unique_id=462079626 instance=ExtResource("4_d0n5p")]
+position = Vector2(2016, 664)
+
+[node name="Bush3" parent="." unique_id=1022015481 instance=ExtResource("4_d0n5p")]
+position = Vector2(3523, 664)
+
+[node name="Bush2" parent="." unique_id=243074282 instance=ExtResource("4_d0n5p")]
+position = Vector2(5025, 664)
+
+[node name="Bush" parent="." unique_id=200286930 instance=ExtResource("4_d0n5p")]
+position = Vector2(6021, 664.00006)
+
+[node name="Ground" type="TextureRect" parent="." unique_id=600831441]
+custom_minimum_size = Vector2(640, 8)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 720.0
+offset_right = 1280.0
+offset_bottom = 728.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+texture = ExtResource("4_wvbb3")
+stretch_mode = 1
+
+[node name="SceneCollisions" type="StaticBody2D" parent="." unique_id=1193915984]
+position = Vector2(4, 637)
+collision_mask = 6
+
+[node name="GroundCollision" type="CollisionShape2D" parent="SceneCollisions" unique_id=2293021]
+position = Vector2(3075.5, 96)
+shape = SubResource("RectangleShape2D_3an3p")
+
+[node name="LeftWallCollision" type="CollisionShape2D" parent="SceneCollisions" unique_id=49413481]
+position = Vector2(-226, -283)
+shape = SubResource("RectangleShape2D_8idl6")
+
+[node name="RightWallColision" type="CollisionShape2D" parent="SceneCollisions" unique_id=1144793102]
+position = Vector2(6417, -281)
+shape = SubResource("RectangleShape2D_8idl6")
+
+[node name="NPCs" type="Node2D" parent="." unique_id=210836349]
+
+[node name="Monster" parent="NPCs" unique_id=2133497064 instance=ExtResource("5_8r2di")]
+position = Vector2(2828, 525)
+
+[node name="StageChangers" type="Node2D" parent="." unique_id=1512793728]
+
+[node name="Car" parent="StageChangers" unique_id=807585394 instance=ExtResource("6_a74cj")]
+position = Vector2(172, 632)
+stageToTransition = "uid://ryoh2cov75gy"
+spawnID = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageChangers/Car" unique_id=1515779807]
+position = Vector2(-303, -181)
+shape = SubResource("RectangleShape2D_eccx6")
+debug_color = Color(0.31967887, 0.6253829, 0, 0.41960785)
+
+[node name="Graveyard" parent="StageChangers" unique_id=95462484 instance=ExtResource("6_a74cj")]
+position = Vector2(6280, 635)
+stageToTransition = "uid://ogh1u7w8npho"
+spawnID = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageChangers/Graveyard" unique_id=1656992627]
+position = Vector2(262, -187)
+shape = SubResource("RectangleShape2D_eccx6")
+debug_color = Color(0.31967887, 0.6253829, 0, 0.41960785)
+
+[node name="StageEvents" type="Node2D" parent="." unique_id=1035578478]
+
+[node name="TutorialInventory" type="Label" parent="StageEvents" unique_id=215726757]
+offset_left = 5677.0
+offset_top = 546.0
+offset_right = 6357.0
+offset_bottom = 631.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("9_8r2di")
+theme_override_font_sizes/font_size = 32
+text = "Press E to Hide"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="stageChanged" from="StageChangers/Car" to="." method="_on_stage_changer_stage_changed"]
+[connection signal="stageChanged" from="StageChangers/Graveyard" to="." method="_on_stage_changer_stage_changed"]

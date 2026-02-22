@@ -26,6 +26,7 @@ DialogueManager="*uid://cxf7g0vfvr4qt"
 InventoryManager="*uid://dlb14oln3u6w0"
 ScreenSettings="*uid://dxtjvthmb1ppv"
 Transition="*uid://bngxwejgmdcfi"
+PlayerData="*uid://bq4r8clmrjkhp"
 
 [display]
 

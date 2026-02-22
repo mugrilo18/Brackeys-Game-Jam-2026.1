@@ -9,6 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://k6535o3yfm4k" path="res://Game Components/Stages/StageComponents/Interactables/FirstSceneTrigger.tscn" id="6_lmroa"]
 [ext_resource type="Script" uid="uid://dtberc4qbgff" path="res://Scripts/Components/Stages/Instances/Scene1 - Denial.gd" id="7_7aydt"]
 [ext_resource type="FontFile" uid="uid://ycmqun67uy1h" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="7_bwk8s"]
+[ext_resource type="PackedScene" uid="uid://bwyfcyhgqqrnh" path="res://Game Components/NPCs/monster.tscn" id="10_i86cg"]
+[ext_resource type="PackedScene" uid="uid://dflm43232proc" path="res://Game Components/Stages/StageComponents/Interactables/interactableTemplate.tscn" id="11_y6rar"]
+[ext_resource type="Script" uid="uid://dub06jc0wj065" path="res://Scripts/Components/Dialogue/Global/DialogueEvents.gd" id="12_iw4ok"]
+[ext_resource type="Script" uid="uid://cgkf07m1gvw0a" path="res://Scripts/Components/Dialogue/Global/SpeechEvent.gd" id="13_8pdv7"]
+[ext_resource type="Script" uid="uid://cftkvrfd2e4yi" path="res://Scripts/Components/Dialogue/Global/AnimationEvent.gd" id="13_iw4ok"]
+[ext_resource type="Script" uid="uid://chjd0eerw6550" path="res://Scripts/Components/Dialogue/Global/DialogueRes.gd" id="14_onhfs"]
+[ext_resource type="AudioStream" uid="uid://cxtcqevcf73ph" path="res://Assets/Audio/Game/Forest.wav" id="16_8pdv7"]
+[ext_resource type="PackedScene" uid="uid://dirw8l414mtc5" path="res://Game Components/Stages/StageComponents/stage_changer.tscn" id="17_onhfs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6x18t"]
 size = Vector2(6406.408, 20)
@@ -16,12 +24,33 @@ size = Vector2(6406.408, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1v2m"]
 size = Vector2(40, 727)
 
+[sub_resource type="Resource" id="Resource_0iuq5"]
+script = ExtResource("13_8pdv7")
+message = "I need to help my mom... She's still in the car..."
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_8pdv7"]
+script = ExtResource("13_iw4ok")
+animationStr = "Walk"
+flipSprite = true
+newPos = Vector2(1609, 626)
+metadata/_custom_type_script = "uid://cftkvrfd2e4yi"
+
+[sub_resource type="Resource" id="Resource_25go4"]
+script = ExtResource("14_onhfs")
+ev = Array[ExtResource("12_iw4ok")]([SubResource("Resource_0iuq5"), SubResource("Resource_8pdv7")])
+metadata/_custom_type_script = "uid://chjd0eerw6550"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onhfs"]
+size = Vector2(370, 539.5)
+
 [node name="Denial" type="Node2D" unique_id=1567375503]
 script = ExtResource("1_eah62")
+stageAmbiance = ExtResource("16_8pdv7")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1490945034]
 limit_left = 0
-limit_right = 6400
+limit_right = 3755
 limit_bottom = 765
 
 [node name="Trees" type="TextureRect" parent="." unique_id=695917054]
@@ -65,6 +94,7 @@ stretch_mode = 1
 
 [node name="SceneCollisions" type="StaticBody2D" parent="." unique_id=1395649167]
 position = Vector2(4, 637)
+collision_mask = 6
 
 [node name="GroundCollision" type="CollisionShape2D" parent="SceneCollisions" unique_id=1012372228]
 position = Vector2(3191.796, 95)
@@ -75,11 +105,11 @@ position = Vector2(-25, -280.5)
 shape = SubResource("RectangleShape2D_w1v2m")
 
 [node name="RightWallColision" type="CollisionShape2D" parent="SceneCollisions" unique_id=753951446]
-position = Vector2(6417, -281)
+position = Vector2(3771, -281)
 shape = SubResource("RectangleShape2D_w1v2m")
 
 [node name="PlayerSpawner" parent="." unique_id=568985626 instance=ExtResource("2_3gdqh")]
-position = Vector2(1393, 611)
+position = Vector2(1270, 627)
 
 [node name="InteractableTemplate" parent="PlayerSpawner" unique_id=2072491402 instance=ExtResource("6_lmroa")]
 position = Vector2(4, 16)
@@ -88,23 +118,39 @@ position = Vector2(4, 16)
 position = Vector2(500, 390)
 scale = Vector2(5, 5)
 
-[node name="SpecificEvents" type="Node2D" parent="." unique_id=371401919 node_paths=PackedStringArray("tutorial_move", "tutorial_interact")]
+[node name="SpecificEvents" type="Node2D" parent="." unique_id=371401919 node_paths=PackedStringArray("stage", "tutorial_move", "tutorial_interact", "tutorial_sprint", "playerBlockDialogue", "monster")]
 position = Vector2(768, 458)
 script = ExtResource("7_7aydt")
+stage = NodePath("..")
 tutorial_move = NodePath("TutorialMove")
 tutorial_interact = NodePath("TutorialInteract")
+tutorial_sprint = NodePath("TutorialSprint")
+playerBlockDialogue = NodePath("InteractableTemplate")
+monster = NodePath("../NPCs/Monster")
 
 [node name="TutorialMove" type="Label" parent="SpecificEvents" unique_id=258393349]
-offset_left = 393.0
-offset_top = 2.0
-offset_right = 857.0
-offset_bottom = 43.0
+offset_left = 262.0
+offset_top = 4.0
+offset_right = 726.0
+offset_bottom = 45.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("7_bwk8s")
 theme_override_font_sizes/font_size = 32
 text = "Press A and D to Move"
+
+[node name="TutorialSprint" type="Label" parent="SpecificEvents" unique_id=1288638799]
+offset_left = -265.0
+offset_top = -102.0
+offset_right = 199.0
+offset_bottom = -61.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("7_bwk8s")
+theme_override_font_sizes/font_size = 32
+text = "Press Shift to sprint"
 
 [node name="TutorialInteract" type="Label" parent="SpecificEvents" unique_id=1969497416]
 offset_left = -623.0
@@ -118,4 +164,30 @@ theme_override_fonts/font = ExtResource("7_bwk8s")
 theme_override_font_sizes/font_size = 32
 text = "Press E to interact"
 
+[node name="InteractableTemplate" parent="SpecificEvents" unique_id=1269087128 instance=ExtResource("11_y6rar")]
+position = Vector2(1021, 179)
+autoTrigger = true
+NormalDialogue = SubResource("Resource_25go4")
+
+[node name="NPCs" type="Node2D" parent="." unique_id=745671271]
+
+[node name="Monster" parent="NPCs" unique_id=2133497064 instance=ExtResource("10_i86cg")]
+position = Vector2(246, 524)
+isActive = false
+
+[node name="StageChangers" type="Node2D" parent="." unique_id=71040842]
+
+[node name="StageChanger" parent="StageChangers" unique_id=807585394 instance=ExtResource("17_onhfs")]
+stageToTransition = "uid://0q8wq5alxkr3"
+spawnID = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageChangers/StageChanger" unique_id=1861799329]
+position = Vector2(3865, 448)
+shape = SubResource("RectangleShape2D_onhfs")
+debug_color = Color(0.31967887, 0.6253829, 0, 0.41960785)
+
 [connection signal="interactedTriggered" from="PlayerSpawner/InteractableTemplate" to="SpecificEvents" method="_on_interactable_template_interacted_triggered"]
+[connection signal="interactedTriggered" from="Car" to="SpecificEvents" method="_on_car_interacted_triggered"]
+[connection signal="startedInteraction" from="Car" to="SpecificEvents" method="_on_car_started_interaction"]
+[connection signal="eventDone" from="NPCs/Monster" to="." method="_on_npc_event_done"]
+[connection signal="stageChanged" from="StageChangers/StageChanger" to="." method="_on_stage_changer_stage_changed"]

@@ -1,15 +1,35 @@
 [gd_scene format=3 uid="uid://0q8wq5alxkr3"]
 
 [ext_resource type="Texture2D" uid="uid://b5i8xu3wu0awh" path="res://Assets/Tree.png" id="1_3an3p"]
-[ext_resource type="Script" uid="uid://bgrloqxnhu4ll" path="res://Scripts/Components/Stages/Instances/Scene2 - Anger.gd" id="1_s2bgv"]
+[ext_resource type="Script" uid="uid://rchrrekougvt" path="res://Scripts/Components/Stages/stage.gd" id="1_s2bgv"]
 [ext_resource type="Texture2D" uid="uid://bu18pqno12imr" path="res://Assets/GroundOutside.png" id="2_8idl6"]
-[ext_resource type="PackedScene" uid="uid://dp6yta80hmioa" path="res://Game Components/Stages/StageComponents/player_spawner.tscn" id="3_8idl6"]
+[ext_resource type="Texture2D" uid="uid://blmk3m7dbc8oc" path="res://Assets/Bush-Sheet.png" id="3_e8aas"]
+[ext_resource type="PackedScene" uid="uid://dirw8l414mtc5" path="res://Game Components/Stages/StageComponents/stage_changer.tscn" id="4_s2bgv"]
+[ext_resource type="PackedScene" uid="uid://bwyfcyhgqqrnh" path="res://Game Components/NPCs/monster.tscn" id="5_eccx6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvgxc"]
+atlas = ExtResource("3_e8aas")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2swqd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvgxc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3an3p"]
-size = Vector2(6406.408, 20)
+size = Vector2(6639, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8idl6"]
 size = Vector2(40, 727)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eccx6"]
+size = Vector2(370, 539.5)
 
 [node name="Anger" type="Node2D" unique_id=1988207926]
 script = ExtResource("1_s2bgv")
@@ -34,6 +54,31 @@ scale = Vector2(5, 5)
 texture = ExtResource("1_3an3p")
 stretch_mode = 1
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=516824658]
+position = Vector2(498, 655)
+scale = Vector2(5.9999995, 5.9999995)
+sprite_frames = SubResource("SpriteFrames_2swqd")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1253630264]
+position = Vector2(2016, 659)
+scale = Vector2(5.9999995, 5.9999995)
+sprite_frames = SubResource("SpriteFrames_2swqd")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="." unique_id=49761262]
+position = Vector2(3523.0002, 659.00006)
+scale = Vector2(5.9999995, 5.9999995)
+sprite_frames = SubResource("SpriteFrames_2swqd")
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="." unique_id=1598423758]
+position = Vector2(5025, 661)
+scale = Vector2(5.9999995, 5.9999995)
+sprite_frames = SubResource("SpriteFrames_2swqd")
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="." unique_id=1246578501]
+position = Vector2(6021, 664.00006)
+scale = Vector2(5.9999995, 5.9999995)
+sprite_frames = SubResource("SpriteFrames_2swqd")
+
 [node name="Ground" type="TextureRect" parent="." unique_id=600831441]
 custom_minimum_size = Vector2(640, 8)
 anchors_preset = 15
@@ -50,18 +95,46 @@ stretch_mode = 1
 
 [node name="SceneCollisions" type="StaticBody2D" parent="." unique_id=1193915984]
 position = Vector2(4, 637)
+collision_mask = 6
 
 [node name="GroundCollision" type="CollisionShape2D" parent="SceneCollisions" unique_id=2293021]
-position = Vector2(3191.796, 95)
+position = Vector2(3075.5, 96)
 shape = SubResource("RectangleShape2D_3an3p")
 
 [node name="LeftWallCollision" type="CollisionShape2D" parent="SceneCollisions" unique_id=49413481]
-position = Vector2(-25, -280.5)
+position = Vector2(-226, -283)
 shape = SubResource("RectangleShape2D_8idl6")
 
 [node name="RightWallColision" type="CollisionShape2D" parent="SceneCollisions" unique_id=1144793102]
 position = Vector2(6417, -281)
 shape = SubResource("RectangleShape2D_8idl6")
 
-[node name="PlayerSpawner" parent="." unique_id=568985626 instance=ExtResource("3_8idl6")]
-position = Vector2(120, 611)
+[node name="NPCs" type="Node2D" parent="." unique_id=210836349]
+
+[node name="Monster" parent="NPCs" unique_id=2133497064 instance=ExtResource("5_eccx6")]
+position = Vector2(-81, 516)
+
+[node name="StageChangers" type="Node2D" parent="." unique_id=1512793728]
+
+[node name="Car" parent="StageChangers" unique_id=807585394 instance=ExtResource("4_s2bgv")]
+position = Vector2(172, 632)
+stageToTransition = "uid://c7d8mfinc408b"
+spawnID = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageChangers/Car" unique_id=1515779807]
+position = Vector2(-303, -181)
+shape = SubResource("RectangleShape2D_eccx6")
+debug_color = Color(0.31967887, 0.6253829, 0, 0.41960785)
+
+[node name="Graveyard" parent="StageChangers" unique_id=95462484 instance=ExtResource("4_s2bgv")]
+position = Vector2(6280, 635)
+stageToTransition = "uid://ogh1u7w8npho"
+spawnID = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageChangers/Graveyard" unique_id=1656992627]
+position = Vector2(262, -187)
+shape = SubResource("RectangleShape2D_eccx6")
+debug_color = Color(0.31967887, 0.6253829, 0, 0.41960785)
+
+[connection signal="stageChanged" from="StageChangers/Car" to="." method="_on_stage_changer_stage_changed"]
+[connection signal="stageChanged" from="StageChangers/Graveyard" to="." method="_on_stage_changer_stage_changed"]

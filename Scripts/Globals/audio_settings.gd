@@ -6,7 +6,7 @@ extends Node
 
 @onready var soundAccept = load("res://Assets/Audio/UIAccept.mp3")
 @onready var soundCancel = load("res://Assets/Audio/UICancel.mp3")
-@onready var musicStream = load("res://Assets/Audio/Menu.mp3")
+@onready var musicStream = load("res://Assets/Audio/Game/Forest.wav")
 
 var volumeMaster = 1.0
 var volumeMusic = 1.0
@@ -21,6 +21,9 @@ var MASTER_AUDIO_ID
 var MUSIC_AUDIO_ID
 var SFX_AUDIO_ID
 var Decibels
+
+var newMusicStream:AudioStream
+var currentFadeTime:float = 2.0
 
 func _ready() -> void:
 	MASTER_AUDIO_ID = AudioServer.get_bus_index(MASTER_AUDIO_NAME)
@@ -37,26 +40,34 @@ func _ready() -> void:
 	
 	musicPlayer.stream = musicStream
 
-func playMusic():
+func playMusic(newMusic:bool = false):
 	if musicPlayer.playing:
 		return
 	
-	var audioTween = get_tree().create_tween()
-	audioTween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	musicPlayer.play()
+
+func setNewMusic(stream:AudioStream, newFadeTime:float = 2.0):
+	if stream == musicPlayer.stream and musicPlayer.playing:
+		return
 	
-	musicPlayer.volume_db = -80.0
-	musicPlayer.play(curMusicPos)
-	audioTween.tween_property(musicPlayer, "volume_db", 0.0, 2.0)
+	newMusicStream = stream
+	currentFadeTime = newFadeTime
+	
+	if musicPlayer.playing:
+		stopMusic()
+	else:
+		playNewMusic()
+
+func playNewMusic():
+	musicPlayer.stream = newMusicStream
+	newMusicStream = null
+	playMusic()
 
 func stopMusic():
-	curMusicPos = musicPlayer.get_playback_position()
+	musicPlayer.stop()
 	
-	var audioTween = get_tree().create_tween()
-	audioTween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	
-	musicPlayer.volume_db = 0.0
-	audioTween.tween_property(musicPlayer, "volume_db", -80.0, 2.0)
-	audioTween.finished.connect(musicPlayer.stop)
+	if newMusicStream != null:
+		playNewMusic()
 
 func AudioMaster(value:float):
 	volumeMaster = value

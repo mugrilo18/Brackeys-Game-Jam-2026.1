@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://ryoh2cov75gy"]
+
+[ext_resource type="Script" uid="uid://rchrrekougvt" path="res://Scripts/Components/Stages/stage.gd" id="1_3may6"]
+[ext_resource type="AudioStream" uid="uid://cxtcqevcf73ph" path="res://Assets/Audio/Game/Forest.wav" id="2_f65cl"]
+[ext_resource type="Texture2D" uid="uid://b5i8xu3wu0awh" path="res://Assets/Tree.png" id="3_b73a7"]
+[ext_resource type="Texture2D" uid="uid://v1d2xfb0oon0" path="res://Assets/Post.png" id="4_25bdi"]
+[ext_resource type="Texture2D" uid="uid://bu18pqno12imr" path="res://Assets/GroundOutside.png" id="5_qeolh"]
+[ext_resource type="PackedScene" uid="uid://xkbqtf5pmnw6" path="res://Game Components/Stages/StageComponents/Interactables/Car.tscn" id="8_kctyl"]
+[ext_resource type="Resource" uid="uid://c03vcctv5fp70" path="res://Game Components/Inventory/Instances/hairClip.tres" id="9_ig2q4"]
+[ext_resource type="Script" uid="uid://dofydekq6cw06" path="res://Scripts/Components/Dialogue/Global/GiveItemEvent.gd" id="10_7q5qu"]
+[ext_resource type="Script" uid="uid://dub06jc0wj065" path="res://Scripts/Components/Dialogue/Global/DialogueEvents.gd" id="12_866qo"]
+[ext_resource type="Script" uid="uid://cgkf07m1gvw0a" path="res://Scripts/Components/Dialogue/Global/SpeechEvent.gd" id="13_na0kj"]
+[ext_resource type="Script" uid="uid://chjd0eerw6550" path="res://Scripts/Components/Dialogue/Global/DialogueRes.gd" id="15_dd1vm"]
+[ext_resource type="PackedScene" uid="uid://dirw8l414mtc5" path="res://Game Components/Stages/StageComponents/stage_changer.tscn" id="17_14pmb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6x18t"]
+size = Vector2(6406.408, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1v2m"]
+size = Vector2(40, 727)
+
+[sub_resource type="Resource" id="Resource_i6kt8"]
+script = ExtResource("13_na0kj")
+message = "I think it must be around here somewhere."
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_snkon"]
+script = ExtResource("13_na0kj")
+message = "..."
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_rr1sw"]
+script = ExtResource("13_na0kj")
+message = "I found it!!!"
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_3may6"]
+script = ExtResource("13_na0kj")
+message = "Now I can open the gate."
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_f65cl"]
+script = ExtResource("10_7q5qu")
+item = ExtResource("9_ig2q4")
+metadata/_custom_type_script = "uid://dofydekq6cw06"
+
+[sub_resource type="Resource" id="Resource_7fmkg"]
+script = ExtResource("15_dd1vm")
+ev = Array[ExtResource("12_866qo")]([SubResource("Resource_i6kt8"), SubResource("Resource_snkon"), SubResource("Resource_rr1sw"), SubResource("Resource_3may6"), SubResource("Resource_f65cl")])
+metadata/_custom_type_script = "uid://chjd0eerw6550"
+
+[sub_resource type="Resource" id="Resource_b73a7"]
+script = ExtResource("13_na0kj")
+message = "I already found my hair clip. I need to get to the gate."
+metadata/_custom_type_script = "uid://cgkf07m1gvw0a"
+
+[sub_resource type="Resource" id="Resource_25bdi"]
+script = ExtResource("15_dd1vm")
+ev = Array[ExtResource("12_866qo")]([SubResource("Resource_b73a7")])
+metadata/_custom_type_script = "uid://chjd0eerw6550"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onhfs"]
+size = Vector2(370, 539.5)
+
+[node name="Denial" type="Node2D" unique_id=1567375503]
+script = ExtResource("1_3may6")
+stageAmbiance = ExtResource("2_f65cl")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1490945034]
+limit_left = 0
+limit_right = 3755
+limit_bottom = 765
+
+[node name="Trees" type="TextureRect" parent="." unique_id=695917054]
+modulate = Color(1, 1, 1, 0.34901962)
+custom_minimum_size = Vector2(100, 128)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 76.0
+offset_right = 1280.0
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+texture = ExtResource("3_b73a7")
+stretch_mode = 1
+
+[node name="Post" type="TextureRect" parent="." unique_id=712949999]
+custom_minimum_size = Vector2(42, 95)
+offset_left = 106.0
+offset_top = 253.99998
+offset_right = 1386.0
+offset_bottom = 349.0
+scale = Vector2(5, 5)
+texture = ExtResource("4_25bdi")
+stretch_mode = 1
+
+[node name="Ground" type="TextureRect" parent="." unique_id=2099248494]
+custom_minimum_size = Vector2(640, 8)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 720.0
+offset_right = 1280.0
+offset_bottom = 728.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+texture = ExtResource("5_qeolh")
+stretch_mode = 1
+
+[node name="SceneCollisions" type="StaticBody2D" parent="." unique_id=1395649167]
+position = Vector2(4, 637)
+collision_mask = 6
+
+[node name="GroundCollision" type="CollisionShape2D" parent="SceneCollisions" unique_id=1012372228]
+position = Vector2(3191.796, 95)
+shape = SubResource("RectangleShape2D_6x18t")
+
+[node name="LeftWallCollision" type="CollisionShape2D" parent="SceneCollisions" unique_id=1767233020]
+position = Vector2(-25, -280.5)
+shape = SubResource("RectangleShape2D_w1v2m")
+
+[node name="RightWallColision" type="CollisionShape2D" parent="SceneCollisions" unique_id=753951446]
+position = Vector2(3771, -281)
+shape = SubResource("RectangleShape2D_w1v2m")
+
+[node name="Car" parent="." unique_id=151419543 instance=ExtResource("8_kctyl")]
+position = Vector2(500, 390)
+scale = Vector2(5, 5)
+NormalDialogue = SubResource("Resource_7fmkg")
+gaveItemDialogue = SubResource("Resource_25bdi")
+
+[node name="NPCs" type="Node2D" parent="." unique_id=745671271]
+
+[node name="StageChangers" type="Node2D" parent="." unique_id=71040842]
+
+[node name="StageChanger" parent="StageChangers" unique_id=807585394 instance=ExtResource("17_14pmb")]
+position = Vector2(3617, 659)
+stageToTransition = "uid://cq2vitu84h84p"
+spawnID = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageChangers/StageChanger" unique_id=1861799329]
+position = Vector2(253, -209)
+shape = SubResource("RectangleShape2D_onhfs")
+debug_color = Color(0.31967887, 0.6253829, 0, 0.41960785)
+
+[connection signal="stageChanged" from="StageChangers/StageChanger" to="." method="_on_stage_changer_stage_changed"]

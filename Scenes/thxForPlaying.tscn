@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://boihahunoywgm"]
+
+[ext_resource type="FontFile" uid="uid://ycmqun67uy1h" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="1_pgihk"]
+[ext_resource type="Script" uid="uid://d2u3x3nqfmiic" path="res://Scripts/Scenes/thx_for_playing.gd" id="1_vd4w8"]
+[ext_resource type="VideoStream" uid="uid://b0sy82n8skqpe" path="res://Assets/Videos/YTDown.com_YouTube_Rick-Astley-Never-Gonna-Give-You-Up-Offi_Media_dQw4w9WgXcQ_006_144p.ogv" id="2_g4o1o"]
+[ext_resource type="Theme" uid="uid://c4vt0woh4670y" path="res://Assets/game_theme.tres" id="2_vvypc"]
+
+[node name="ThxForPlaying" type="Node2D" unique_id=104309215]
+script = ExtResource("1_vd4w8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=136729243]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer" unique_id=1983400743]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -148.495
+offset_right = 128.0
+offset_bottom = -4.4949036
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_g4o1o")
+autoplay = true
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1858064414]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = 80.60501
+offset_right = 230.0
+offset_bottom = 165.60522
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_pgihk")
+theme_override_font_sizes/font_size = 32
+text = "We ran out of time LOL
+Thanks for playing!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1521363501]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -108.0
+offset_top = -130.83002
+offset_right = 108.0
+offset_bottom = -81.83002
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource("2_vvypc")
+theme_type_variation = &"MainMenuButton"
+text = "Main Menu"
+
+[connection signal="button_down" from="CanvasLayer/Button" to="." method="_on_button_button_down"]

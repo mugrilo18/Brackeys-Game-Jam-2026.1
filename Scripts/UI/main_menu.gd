@@ -9,7 +9,8 @@ func _ready() -> void:
 	play_btn.pressed.connect(PlayGame)
 	options_btn.pressed.connect(Settings)
 	
-	AudioSettings.playMusic()
+	var stream = load("res://Assets/Audio/Game/Forest.wav")
+	AudioSettings.setNewMusic(stream)
 	
 	if OS.has_feature("web"):
 		quit_btn.visible = false

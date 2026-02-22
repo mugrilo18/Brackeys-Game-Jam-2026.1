@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://d4cgausc078vd"]
+
+[ext_resource type="Texture2D" uid="uid://blmk3m7dbc8oc" path="res://Assets/Bush-Sheet.png" id="1_xbhuc"]
+[ext_resource type="Script" uid="uid://8x4fqjfm1pxs" path="res://Scripts/Components/Stages/StageComponents/HidingSpots.gd" id="2_ltl54"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltl54"]
+atlas = ExtResource("1_xbhuc")
+region = Rect2(33, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u4wc"]
+atlas = ExtResource("1_xbhuc")
+region = Rect2(66, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjvdf"]
+atlas = ExtResource("1_xbhuc")
+region = Rect2(99, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qeru6"]
+atlas = ExtResource("1_xbhuc")
+region = Rect2(0, 33, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvgxc"]
+atlas = ExtResource("1_xbhuc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2swqd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltl54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u4wc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjvdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qeru6")
+}],
+"loop": true,
+"name": &"Hiding",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvgxc")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7eti"]
+
+[node name="Bush" type="AnimatedSprite2D" unique_id=1678058006]
+scale = Vector2(5.9999995, 5.9999995)
+sprite_frames = SubResource("SpriteFrames_2swqd")
+animation = &"Hiding"
+frame_progress = 0.7332574
+script = ExtResource("2_ltl54")
+
+[node name="PlayerCol" type="Area2D" parent="." unique_id=1657110452 groups=["Hiding"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCol" unique_id=1007823837]
+position = Vector2(0, 2.8333335)
+shape = SubResource("RectangleShape2D_i7eti")
+debug_color = Color(0.6502518, 0.520135, 0, 0.41960785)

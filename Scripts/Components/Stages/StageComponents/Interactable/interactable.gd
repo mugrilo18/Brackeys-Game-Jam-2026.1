@@ -19,6 +19,7 @@ var currentDialogue:Dialogue = NormalDialogue
 
 signal correctItemTriggered
 signal interactedTriggered
+signal startedInteraction
 
 func giveItem():
 	gaveItem = true
@@ -32,12 +33,15 @@ func getNormalDialogue() -> Dialogue:
 	return NormalDialogue
 
 func checkItem(item:Item) -> Dialogue:
-	if item.ID != correctItem.ID:
+	if correctItem == null or item.ID != correctItem.ID:
 		currentDialogue = WrongItemDialogue
 		return WrongItemDialogue
 	
 	currentDialogue = CorrectItemDialogue
 	return CorrectItemDialogue
+
+func playStartSignal():
+	startedInteraction.emit()
 
 func playSignal():
 	if currentDialogue == CorrectItemDialogue:

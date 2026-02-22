@@ -1,0 +1,269 @@
+[gd_scene format=3 uid="uid://btdnaxwtribgn"]
+
+[ext_resource type="Texture2D" uid="uid://cbx507uoq7nho" path="res://Assets/MonsterGameOver-Sheet.png" id="1_houp4"]
+[ext_resource type="Script" uid="uid://bc7dcyfs1lik7" path="res://Scenes/game_over.gd" id="1_x6tyv"]
+[ext_resource type="AudioStream" uid="uid://cfulm6vtvgd1f" path="res://Assets/Audio/Game/GameOver.wav" id="2_fevt1"]
+[ext_resource type="FontFile" uid="uid://ycmqun67uy1h" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="3_jnb8n"]
+[ext_resource type="Theme" uid="uid://c4vt0woh4670y" path="res://Assets/game_theme.tres" id="4_bwgl3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fevt1"]
+atlas = ExtResource("1_houp4")
+region = Rect2(0, 0, 156, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnb8n"]
+atlas = ExtResource("1_houp4")
+region = Rect2(157, 0, 156, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwgl3"]
+atlas = ExtResource("1_houp4")
+region = Rect2(314, 0, 156, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6tyv"]
+atlas = ExtResource("1_houp4")
+region = Rect2(471, 0, 156, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4yd2"]
+atlas = ExtResource("1_houp4")
+region = Rect2(0, 171, 156, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_houp4"]
+atlas = ExtResource("1_houp4")
+region = Rect2(157, 171, 156, 170)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ohe3s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fevt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnb8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwgl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6tyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4yd2")
+}],
+"loop": false,
+"name": &"Appear",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_houp4")
+}],
+"loop": true,
+"name": &"Jumpscare",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_houp4"]
+resource_name = "GameOver"
+length = 11.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"Appear", &"Jumpscare"]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_fevt1")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.7, 6.266667, 10.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/GameOverTxt:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 10.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_jnb8n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Jumpscare"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/GameOverTxt:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fevt1"]
+_data = {
+&"GameOver": SubResource("Animation_houp4"),
+&"RESET": SubResource("Animation_jnb8n")
+}
+
+[node name="GameOver" type="Node2D" unique_id=1446775327]
+script = ExtResource("1_x6tyv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1279288111]
+position = Vector2(640, 360)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_ohe3s")
+animation = &"Jumpscare"
+autoplay = "Appear"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1441455656]
+libraries/ = SubResource("AnimationLibrary_fevt1")
+autoplay = &"GameOver"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1714753265]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=111490254]
+
+[node name="GameOverTxt" type="Control" parent="CanvasLayer" unique_id=625160298]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/GameOverTxt" unique_id=1443353631]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -183.135
+offset_right = 208.0
+offset_bottom = -101.13452
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_jnb8n")
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER"
+
+[node name="Restart" type="Button" parent="CanvasLayer/GameOverTxt" unique_id=834081742]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -24.5
+offset_right = 82.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("4_bwgl3")
+theme_type_variation = &"MainMenuButton"
+text = "Restart"
+
+[node name="MainMenu" type="Button" parent="CanvasLayer/GameOverTxt" unique_id=1302931646]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = 74.98001
+offset_right = 108.0
+offset_bottom = 123.98001
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("4_bwgl3")
+theme_type_variation = &"MainMenuButton"
+text = "Main menu"
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=68368446]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -325.055
+offset_top = -54.789978
+offset_right = -13.054565
+offset_bottom = -13.789978
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_jnb8n")
+theme_override_font_sizes/font_size = 32
+text = "Press E to Skip"
+
+[node name="Appear" type="Timer" parent="CanvasLayer" unique_id=305196125]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="button_down" from="CanvasLayer/GameOverTxt/Restart" to="." method="_on_restart_button_down"]
+[connection signal="button_down" from="CanvasLayer/GameOverTxt/MainMenu" to="." method="_on_main_menu_button_down"]
+[connection signal="timeout" from="CanvasLayer/Appear" to="." method="_on_appear_timeout"]

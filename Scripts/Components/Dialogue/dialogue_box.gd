@@ -1,5 +1,7 @@
 extends Control
 
+class_name DialogueBoxUI
+
 @export var speakerKey:String = "player"
 
 @onready var animation = $AnimationPlayer

@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://bniy53kkqa41o" path="res://Scripts/Components/player.gd" id="1_jkxu4"]
 [ext_resource type="Texture2D" uid="uid://c3qqnjup2wqhk" path="res://Assets/player.png" id="2_jkxu4"]
 [ext_resource type="PackedScene" uid="uid://gy5qitxqttdf" path="res://Game Components/Dialogue/dialogue_box.tscn" id="3_ivica"]
+[ext_resource type="Texture2D" uid="uid://bkqcoeiv2s08r" path="res://Assets/hide.png" id="3_w8ohm"]
 [ext_resource type="Texture2D" uid="uid://b6vahb0yojsca" path="res://Assets/interactIcon.png" id="4_ismmh"]
+[ext_resource type="AudioStream" uid="uid://bqljwe7rocf1n" path="res://Assets/Audio/Game/Steps.wav" id="5_8h38b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivica"]
 atlas = ExtResource("2_jkxu4")
@@ -64,6 +66,22 @@ region = Rect2(66, 33, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nahcw"]
 atlas = ExtResource("2_jkxu4")
 region = Rect2(99, 33, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g6al"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(99, 99, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xha8d"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(0, 132, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87ljv"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(33, 132, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj01q"]
+atlas = ExtResource("2_jkxu4")
+region = Rect2(66, 132, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jkxu4"]
 animations = [{
@@ -131,6 +149,23 @@ animations = [{
 "loop": true,
 "name": &"Walk",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1g6al")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xha8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87ljv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj01q")
+}],
+"loop": true,
+"name": &"WalkBack",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_21ndq"]
@@ -153,19 +188,22 @@ expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
 [node name="Player" type="CharacterBody2D" unique_id=936548310 groups=["Player"]]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_jkxu4")
+dialogueIcon = ExtResource("4_ismmh")
+hideIcon = ExtResource("3_w8ohm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=369066615]
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_jkxu4")
-animation = &"WakeUp"
-frame_progress = 0.20730749
+animation = &"WalkBack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=922175343]
 position = Vector2(9, 5)
 shape = SubResource("CapsuleShape2D_21ndq")
 
-[node name="InteractArea" type="Area2D" parent="." unique_id=66639585]
+[node name="InteractArea" type="Area2D" parent="." unique_id=66639585 groups=["Player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=1984745253]
 position = Vector2(6, 8.5)
@@ -208,6 +246,12 @@ texture = ExtResource("4_ismmh")
 
 [node name="AnimationEventTimer" type="Timer" parent="." unique_id=255890880]
 one_shot = true
+
+[node name="Audio" type="Node" parent="." unique_id=2073984677]
+
+[node name="Steps" type="AudioStreamPlayer" parent="Audio" unique_id=323385406]
+stream = ExtResource("5_8h38b")
+volume_db = -10.0
 
 [connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]
 [connection signal="area_exited" from="InteractArea" to="." method="_on_interact_area_area_exited"]
